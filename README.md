@@ -11,3 +11,7 @@ TerraGlamp site
 
     cd ./frontend
     npm run dev
+
+### run db
+
+    sudo docker-compose -f docker-compose.mongo-debug.yml up -d
