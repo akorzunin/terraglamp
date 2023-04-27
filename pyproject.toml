@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "terra-glamp"
+version = "0.1.0"
+description = ""
+authors = ["akorzunin <akorzunin123@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.11"
+fastapi = "uvicorn"
+uvicorn = "^0.21.1"
+motor = "^3.1.2"
+Jinja2 = "^3.1.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
