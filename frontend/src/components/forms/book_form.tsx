@@ -38,7 +38,10 @@ export const BookForm = () => {
   return (
     <>
       <h2 className="py-4 text-2xl">Заполните форму для бронирования</h2>
-      <form onSubmit={submitForm}>
+      <form
+        onSubmit={submitForm}
+        className="flex flex-col gap-4 w-[80%] mx-auto text-start"
+      >
         <div className="flex flex-col gap-4 mb-4 w-[80%] mx-auto text-start">
           <div className={inputSectionStyle}>
             <label>Тип палатки</label>
@@ -109,8 +112,11 @@ export const BookForm = () => {
             <textarea className={inputStyle} placeholder="Ваш комментарий" />
           </div>
         </div>
-        <button disabled={!isFormValid} className="w-[80%] mx-auto">
-          Забронировать
+        <button
+          disabled={!isFormValid}
+          className=" mx-auto bg-yellow-400 text-black rounded-3xl text-sm	 font-bold px-14 py-3 transition-colors hover:bg-orange-400"
+        >
+          Забронировать аппартаменты
         </button>
       </form>
     </>
