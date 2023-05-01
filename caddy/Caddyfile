@@ -1,0 +1,14 @@
+{$DOMAIN} {
+	root * /app/frontend/dist
+	encode gzip
+	file_server
+
+	handle_path /api/* {
+		reverse_proxy terraglamp:{$API_PORT}
+	}
+
+	redir /terraglamp /terraglamp/
+	handle_path /terraglamp/* {
+		reverse_proxy terraglamp:{$API_PORT}
+	}
+}
