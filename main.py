@@ -37,6 +37,14 @@ app.include_router(
     tags=["api"],
 )
 
+
+@app.get("/")
+async def root():
+    return RedirectResponse(
+        "https://test-tilda-terraglamp.duckdns.org/terraglamp"
+    )
+
+
 if __name__ == "__main__":
     uvicorn.run(
         app,
