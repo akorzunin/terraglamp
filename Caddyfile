@@ -1,0 +1,50 @@
+http://localhost:7777 {
+	# caddy run --config Caddyfile  --watch
+	handle {
+		root * ./frontend/dist
+		encode gzip
+		file_server browse
+	}
+
+	# handle_path /images/* {
+	# 	root * /home/akorz/Documents/terraglamp/frontend/public
+	# 	encode gzip
+	# 	file_server
+	# }
+
+	handle_path /api/* {
+		reverse_proxy :8888
+	}
+	handle_path /dbview/* {
+		reverse_proxy :8081 {
+			# header_down Access-Control-Allow-Origin "*"
+			header_up Host {upstream_hostport}
+		}
+		# uri replace /dbview /
+		# uri strip_prefix /dbview
+		# header_up Host {http.reverse_proxy.upstream.hostport}
+		# header_up X-Real-IP {remote}
+		# header_up X-Forwarded-For {remote}
+		# header_up X-Forwarded-Port {server_port}
+		# header_up X-Forwarded-Proto {scheme}
+		# uri_replace /dbview / 
+	}
+	# uri replace /dbview/ /papepe
+	# handle {
+	# 	reverse_proxy :5174
+	# }
+}
+
+# http://localhost:8083 {
+# 	basicauth {
+# 		admin $2a$14$Q9HfHg37bWzwAF1MBwfLnOjdw.dRPB8IzRs58OsEFPonZJOvTxIQy
+# 	}
+# 	reverse_proxy :8081
+# }
+# log {
+#     output file /var/log/caddy/my-static-site.log
+# }
+
+# header {
+#     ?Cache-Control "max-age=1800"
+# }
