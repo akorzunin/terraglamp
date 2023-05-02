@@ -3,7 +3,7 @@
 	encode gzip
 	file_server
 
-	handle_path /api/* {
+	handle /api/* {
 		reverse_proxy terraglamp:{$API_PORT}
 	}
 
