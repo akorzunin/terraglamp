@@ -18,9 +18,6 @@ export const Footer = () => {
         <p className="text-gray-700 text-center text-sm py-4">
           © 2023 TerraGlamp. Все права защищены.
         </p>
-        <div className="md:bg-slate-700 lg:bg-black w-[500px] text-gray-500 text-center text-sm py-4">
-          Made on Tilda
-        </div>
       </div>
     </footer>
   );
