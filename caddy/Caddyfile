@@ -8,6 +8,9 @@
 	}
 	handle /dbview/* {
 		reverse_proxy mongo-express:8081
+		basicauth {
+			admin {$DBVIEW_PASS}
+		}
 	}
 	redir /terraglamp /terraglamp/
 	handle_path /terraglamp/* {
