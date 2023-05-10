@@ -1,6 +1,8 @@
+import { FC } from "react";
+
 const footerTextStyle = "text-black  text-center text-xl font-bold";
 
-export const Footer = () => {
+export const Footer: FC = () => {
   return (
     <footer className="bg-slate-300">
       <div className="flex flex-col gap-2 max-w-[40%] mx-auto pt-4">

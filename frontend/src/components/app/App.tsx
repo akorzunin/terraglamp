@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { MainPage } from "../../pages/main_page";
+import { MainPage } from "../../pages/MainPage/main_page";
 import { BookFormPage } from "../../pages/book_from_page";
 
 function App() {
