@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const inputStyle = "w-full border-2 border-orange-400 rounded-md p-2";
+const inputStyle = "w-full border-2 border-yellow-400 rounded-md p-2";
 const inputSectionStyle = "flex flex-col gap-2";
 
 export const BookForm = () => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [userName, setUserName] = useState("");
   const [adult, setAdult] = useState(1);
-  const [children, setChildren] = useState(1);
+  const [children, setChildren] = useState(0);
 
   useEffect(() => {
     if (userName.length > 0) {
@@ -37,10 +37,12 @@ export const BookForm = () => {
   };
   return (
     <>
-      <h2 className="py-4 text-2xl">Заполните форму для бронирования</h2>
+      <h2 className="text-center py-4 text-2xl">
+        Заполните форму для бронирования
+      </h2>
       <form
         onSubmit={submitForm}
-        className="flex flex-col gap-4 w-[80%] mx-auto text-start"
+        className="flex flex-col gap-4 w-[80%] max-w-screen-md mx-auto text-start"
       >
         <div className="flex flex-col gap-4 mb-4 w-[80%] mx-auto text-start">
           <div className={inputSectionStyle}>
@@ -75,6 +77,7 @@ export const BookForm = () => {
               value={children}
               onChange={(e) => setChildren(parseInt(e.target.value))}
             >
+              <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -114,7 +117,7 @@ export const BookForm = () => {
         </div>
         <button
           disabled={!isFormValid}
-          className=" mx-auto bg-yellow-400 text-black rounded-3xl text-sm	 font-bold px-14 py-3 transition-colors hover:bg-orange-400"
+          className=" mx-auto bg-yellow-400 text-black rounded-3xl text-sm	 font-bold px-14 py-3 transition-colors hover:bg-orange-400 mb-8"
         >
           Забронировать аппартаменты
         </button>
