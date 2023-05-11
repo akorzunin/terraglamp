@@ -6,7 +6,7 @@ export const Header = () => {
   const navigate = useNavigate();
   return (
     <header className="bg-[rgba(0,0,0,0.5)] sticky top-0 left-0 z-50">
-      <div className="flex justify-between w-[60%] mx-auto bg-transparent  max-h-20">
+      <div className="flex justify-between w-[60%] mx-auto bg-transparent max-h-20">
         <div className="flex items-center gap-3">
           <img src="./logo.jpg" alt="logo" className="w-20 h-20"></img>
           <p className={headerElementClass}>О НАС</p>
