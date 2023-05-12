@@ -13,7 +13,7 @@ export const Options = () => {
         <Carousel autoplay waitForAnimate>
           <Image src="./r1c1_prisma.jpg" />
           <Image src="./r3c1.jpg" />
-          {/* <Image src="./r4c1.png" /> */}
+          <Image src="./r4c1.jpg" />
         </Carousel>
         <h4 className="font-sans font-bold text-2xl mt-7">Призма</h4>
         <p className="font-sans font-normal text-base">Стоимость аренды:</p>
@@ -40,7 +40,11 @@ export const Options = () => {
         </button>
       </div>
       <div className="flex flex-col">
-        <Image src="./shater.jpg" />
+        <Carousel autoplay waitForAnimate>
+          <Image src="./shater.jpg" />
+          <Image src="./r3c1.jpg" />
+          <Image src="./shater.jpg" />
+        </Carousel>
         <h4 className="font-sans font-bold text-2xl mt-7">Шатёр</h4>
         <p className="font-sans font-normal text-base">Стоимость аренды:</p>
         <p className="font-sans font-normal text-base mb-5">
@@ -65,7 +69,11 @@ export const Options = () => {
         </button>
       </div>
       <div className="flex flex-col">
-        <Image src="./safaritent.jpg" />
+        <Carousel>
+          <Image src="./safaritent.jpg" height={405} />
+          <Image src="./r3c1.jpg" />
+          <Image src="./shater.jpg" />
+        </Carousel>
         <h4 className="font-sans font-bold text-2xl mt-7">Сафари-тент</h4>
         <p className="font-sans font-normal text-base">Стоимость аренды:</p>
         <p className="font-sans font-normal text-base mb-5">
