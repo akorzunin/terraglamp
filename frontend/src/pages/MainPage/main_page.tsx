@@ -6,6 +6,7 @@ import { HeaderMobile } from "../../components/header-mobile/HeaderMobile";
 import { Header } from "../../components/header/header";
 import { Leisure } from "../../components/leisure/Leisure";
 import { Options } from "../../components/options/Options";
+import { Reservation } from "../../components/reservation/Reservation";
 import { TitleImage } from "../../components/TitleImage/TitleImage";
 
 export const MainPage = () => {
@@ -19,8 +20,7 @@ export const MainPage = () => {
       <Gallery />
       <Options />
       <Actions />
-      
-      <div>MainPage</div>
+      <Reservation />
       <Footer />
     </main>
   );
