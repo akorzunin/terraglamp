@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { AboutUs } from "../../components/about-us/AboutUs";
 import { Actions } from "../../components/actions/Actions";
+import { BurgerMenu } from "../../components/burger-menu/BurgerMenu";
 import { Footer } from "../../components/footer/footer";
 import { Gallery } from "../../components/gallery/Gallery";
 import { HeaderGallery } from "../../components/header-gallery/HeaderGallery";
@@ -11,10 +13,12 @@ import { Reservation } from "../../components/reservation/Reservation";
 import { TitleImage } from "../../components/title-image/TitleImage";
 
 export const MainPage = () => {
+  const [mobileMenuActive, setMobileMenuiActive] = useState(false);
   return (
     <main className="relative">
+      <BurgerMenu onClick={setMobileMenuiActive} active={mobileMenuActive} />
       {/* <Header /> */}
-      {/* <HeaderMobile /> */}
+      {mobileMenuActive && <HeaderMobile />}
       <TitleImage
         isHeader
         image="./main.jpg"
