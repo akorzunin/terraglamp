@@ -2,6 +2,7 @@ import { AboutUs } from "../../components/about-us/AboutUs";
 import { Actions } from "../../components/actions/Actions";
 import { Footer } from "../../components/footer/footer";
 import { Gallery } from "../../components/gallery/Gallery";
+import { HeaderGallery } from "../../components/header-gallery/HeaderGallery";
 import { HeaderMobile } from "../../components/header-mobile/HeaderMobile";
 import { Header } from "../../components/header/header";
 import { Leisure } from "../../components/leisure/Leisure";
@@ -21,7 +22,7 @@ export const MainPage = () => {
         шумом течения реки. У нас наполняешься энергией, восстанавливаешь 
         силы и встречаешь именно то, что ищешь"
       />
-      
+      <HeaderGallery />
       <AboutUs />
       <Leisure />
       <Gallery />
