@@ -7,14 +7,21 @@ import { Header } from "../../components/header/header";
 import { Leisure } from "../../components/leisure/Leisure";
 import { Options } from "../../components/options/Options";
 import { Reservation } from "../../components/reservation/Reservation";
-import { TitleImage } from "../../components/TitleImage/TitleImage";
+import { TitleImage } from "../../components/title-image/TitleImage";
 
 export const MainPage = () => {
   return (
     <main className="relative">
       {/* <Header /> */}
       {/* <HeaderMobile /> */}
-      {/* <TitleImage /> */}
+      <TitleImage
+        isHeader
+        image="./main.jpg"
+        text="Здесь можно проникнуться шорохом травы, дуновением ветра, 
+        шумом течения реки. У нас наполняешься энергией, восстанавливаешь 
+        силы и встречаешь именно то, что ищешь"
+      />
+      
       <AboutUs />
       <Leisure />
       <Gallery />
