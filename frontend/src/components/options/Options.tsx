@@ -35,7 +35,7 @@ export const Options = () => {
             до 12:00.
           </li>
         </ul>
-        <button className="w-[184px] h-[56px] rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+        <button className="w-[184px] h-[56px] ml-auto mr-auto rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
           Забронировать
         </button>
       </div>
@@ -64,12 +64,12 @@ export const Options = () => {
           </li>
           <li>Время заезда с 14:00 , время выезда до 12:00.</li>
         </ul>
-        <button className="w-[184px] h-[56px] rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+        <button className="w-[184px] h-[56px] ml-auto mr-auto rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
           Забронировать
         </button>
       </div>
       <div className="flex flex-col">
-        <Carousel>
+        <Carousel autoplay waitForAnimate>
           <Image src="./safaritent.jpg" height={405} />
           <Image src="./r3c1.jpg" />
           <Image src="./shater.jpg" />
@@ -94,7 +94,7 @@ export const Options = () => {
             до 12:00.
           </li>
         </ul>
-        <button className="w-[184px] h-[56px] rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+        <button className="w-[184px] h-[56px] ml-auto mr-auto rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
           Забронировать
         </button>
       </div>

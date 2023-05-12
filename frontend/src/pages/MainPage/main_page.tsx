@@ -1,4 +1,5 @@
 import { AboutUs } from "../../components/about-us/AboutUs";
+import { Actions } from "../../components/actions/Actions";
 import { Footer } from "../../components/footer/footer";
 import { Gallery } from "../../components/gallery/Gallery";
 import { HeaderMobile } from "../../components/header-mobile/HeaderMobile";
@@ -17,6 +18,8 @@ export const MainPage = () => {
       <Leisure />
       <Gallery />
       <Options />
+      <Actions />
+      
       <div>MainPage</div>
       <Footer />
     </main>
