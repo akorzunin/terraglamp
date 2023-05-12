@@ -10,9 +10,9 @@ import { TitleImage } from "../../components/TitleImage/TitleImage";
 export const MainPage = () => {
   return (
     <main className="relative">
-      {/* <Header /> */}
-      {/* <HeaderMobile /> */}
-      {/* <TitleImage /> */}
+      <Header />
+      <HeaderMobile />
+      <TitleImage />
       <AboutUs />
       <Leisure />
       <Gallery />
