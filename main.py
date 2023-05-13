@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.app.api_router import router as api_router
+from backend.routes.api_router import router as api_router
 from backend.settings import DEBUG, FRONTEND_HOST
 
 
@@ -32,7 +32,6 @@ if DEBUG:
 app.include_router(
     api_router,
     prefix="/api",
-    tags=["api"],
 )
 
 
