@@ -10,10 +10,10 @@ export const Options = () => {
         <p className="mb-10 font-sans font-normal text-base text-center pr-10 pl-10">
           Для создания интерьеров мы используем только экологичные материалы
         </p>
-        <Carousel autoplay waitForAnimate>
+        <Carousel waitForAnimate>
           <Image src="./r1c1_prisma.jpg" />
           <Image src="./r3c1.jpg" />
-          <Image src="./r4c1.jpg" />
+          {/* <Image src="./r4c1.jpg" /> TODO add this image */}
         </Carousel>
         <h4 className="font-sans font-bold text-2xl mt-7">Призма</h4>
         <p className="font-sans font-normal text-base">Стоимость аренды:</p>
@@ -35,12 +35,12 @@ export const Options = () => {
             до 12:00.
           </li>
         </ul>
-        <button className="w-[184px] h-[56px] ml-auto mr-auto rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+        <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
           Забронировать
         </button>
       </div>
       <div className="flex flex-col">
-        <Carousel autoplay waitForAnimate>
+        <Carousel waitForAnimate>
           <Image src="./shater.jpg" />
           <Image src="./r3c1.jpg" />
           <Image src="./shater.jpg" />
@@ -64,12 +64,12 @@ export const Options = () => {
           </li>
           <li>Время заезда с 14:00 , время выезда до 12:00.</li>
         </ul>
-        <button className="w-[184px] h-[56px] ml-auto mr-auto rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+        <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
           Забронировать
         </button>
       </div>
       <div className="flex flex-col">
-        <Carousel autoplay waitForAnimate>
+        <Carousel waitForAnimate>
           <Image src="./safaritent.jpg" height={405} />
           <Image src="./r3c1.jpg" />
           <Image src="./shater.jpg" />
@@ -94,7 +94,7 @@ export const Options = () => {
             до 12:00.
           </li>
         </ul>
-        <button className="w-[184px] h-[56px] ml-auto mr-auto rounded-3xl border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+        <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
           Забронировать
         </button>
       </div>

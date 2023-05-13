@@ -6,7 +6,6 @@ import { Footer } from "../../components/footer/footer";
 import { Gallery } from "../../components/gallery/Gallery";
 import { HeaderGallery } from "../../components/header-gallery/HeaderGallery";
 import { HeaderMobile } from "../../components/header-mobile/HeaderMobile";
-import { Header } from "../../components/header/header";
 import { Leisure } from "../../components/leisure/Leisure";
 import { Options } from "../../components/options/Options";
 import { Reservation } from "../../components/reservation/Reservation";
@@ -17,7 +16,6 @@ export const MainPage = () => {
   return (
     <main className="relative">
       <BurgerMenu onClick={setMobileMenuiActive} active={mobileMenuActive} />
-      {/* <Header /> */}
       {mobileMenuActive && <HeaderMobile />}
       <TitleImage
         isHeader
