@@ -5,7 +5,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.api_router import router as api_router
-from backend.settings import DEBUG
+from backend.settings import DEBUG, FRONTEND_HOST
 
 
 app = FastAPI(
@@ -38,9 +38,7 @@ app.include_router(
 
 @app.get("/")
 async def root():
-    return RedirectResponse(
-        "https://test-tilda-terraglamp.duckdns.org/terraglamp"
-    )
+    return RedirectResponse(FRONTEND_HOST)
 
 
 if __name__ == "__main__":
