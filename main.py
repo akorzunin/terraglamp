@@ -1,9 +1,7 @@
 import uvicorn
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import RedirectResponse, FileResponse
+from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.api_router import router as api_router
