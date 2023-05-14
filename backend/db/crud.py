@@ -1,8 +1,10 @@
 from datetime import datetime, timedelta
-from typing import Optional
+from typing import AsyncGenerator, Optional
+from bson.raw_bson import RawBSONDocument
+from fastapi.encoders import jsonable_encoder
 
 from backend.db.db_conn import users, tents, bookings
-from backend.db.schemas import TentModel, TentType, UserModel
+from backend.db.schemas import BookingModel, TentModel, TentType, UserModel
 
 
 async def find_user_by_email(email: str) -> Optional[UserModel]:
@@ -20,6 +22,13 @@ async def get_tent_by_type(tent_type: TentType) -> TentModel:
     if document := await tents.find_one({"tent_type": tent_type}):
         return TentModel(**document)
     raise ValueError(f"No such type: {tent_type}")
+
+
+async def get_all_tent_by_type(
+    tent_type: TentType,
+) -> AsyncGenerator[TentModel, None]:
+    async for doc in tents.find({"tent_type": tent_type}):
+        yield TentModel(**doc)
 
 
 collision_booking_filter = {
@@ -51,9 +60,15 @@ def get_collision_booking_filter(
 
 async def get_collision_booking(
     tent: TentModel, start_date: datetime, end_date: datetime
-) -> bool | None:
-    if documents := bookings.find(
+) -> bool:
+    """Find the collision bookigs for the given date range"""
+    documents = bookings.find(
         filter=get_collision_booking_filter(tent, start_date, end_date)
-    ):
-        return bool(await documents.to_list(1))
-    return None
+    )
+    return bool(await documents.to_list(1))
+
+
+async def create_booking(booking: BookingModel) -> str:
+    raw_booking: RawBSONDocument = jsonable_encoder(booking)
+    new_booking = await bookings.insert_one(raw_booking)
+    return new_booking.inserted_id
