@@ -45,16 +45,18 @@ export const BookForm = () => {
         total_members: adult + children,
       }),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data) {
-          // react redirect to success page
+      .then((res) => {
+        if (res.status === 200) {
           window.location.href = "/#/booking-success";
+          return res.json();
         }
+        return res.json();
+      })
+      .then((data) => {
+        console.info(data);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       });
   };
   return (
