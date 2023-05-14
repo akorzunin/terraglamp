@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import * as dayjs from "dayjs";
+import * as _dayjs from "dayjs";
+
+const dayjs = _dayjs;
 
 const inputStyle = "w-full border-2 border-yellow-400 rounded-md p-2";
 const inputSectionStyle = "flex flex-col gap-2";
