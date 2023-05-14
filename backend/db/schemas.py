@@ -20,7 +20,7 @@ class PhoneNumber(str):
         v = v.strip().replace(" ", "")
 
         try:
-            pn = phonenumbers.parse(v)
+            pn = phonenumbers.parse(v, _check_region=False)
         except phonenumbers.phonenumberutil.NumberParseException as e:
             raise ValueError("invalid phone number format") from e
 

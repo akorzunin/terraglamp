@@ -1,35 +1,57 @@
 import { useEffect, useState } from "react";
+import * as dayjs from "dayjs";
 
 const inputStyle = "w-full border-2 border-yellow-400 rounded-md p-2";
 const inputSectionStyle = "flex flex-col gap-2";
 
 export const BookForm = () => {
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [tentType, setTentType] = useState("prisma");
+  const [checkInDate, setCheckInDate] = useState(dayjs().format());
+  const [checkOutDate, setCheckOutDate] = useState(dayjs().format());
   const [adult, setAdult] = useState(1);
   const [children, setChildren] = useState(0);
+  const [comment, setComment] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
-    if (userName.length > 0) {
+    if (firstName.length > 0) {
       setIsFormValid(true);
     }
-  }, [userName]);
+  }, [firstName]);
 
   const submitForm = () => {
-    fetch("http://localhost:8888/api/book", {
+    console.log(import.meta.env.VITE_API_URL);
+
+    fetch(`${import.meta.env.VITE_API_URL}/api/booking`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
       body: JSON.stringify({
-        adult,
-        children,
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        phone: phone,
+        tent_type: tentType,
+        check_in_date: checkInDate,
+        check_out_date: checkOutDate,
+        adults: adult,
+        children: children,
+        total_members: adult + children,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data) {
+          // react redirect to success page
+          window.location.href = "/#/booking-success";
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -46,16 +68,74 @@ export const BookForm = () => {
       >
         <div className="flex flex-col gap-4 mb-4 w-[80%] mx-auto text-start">
           <div className={inputSectionStyle}>
+            <label>Имя</label>
+            <input
+              className={inputStyle}
+              type="text"
+              placeholder="Ваше полное имя"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+          <div className={inputSectionStyle}>
+            <label>Фамилия</label>
+            <input
+              className={inputStyle}
+              type="text"
+              placeholder="Ваша фамилия"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+          <div className={inputSectionStyle}>
+            <label>E-mail</label>
+            <input
+              className={inputStyle}
+              type="email"
+              placeholder="Ваш e-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className={inputSectionStyle}>
+            <label>Телефон</label>
+            <input
+              className={inputStyle}
+              type="tel"
+              placeholder="Ваш телефон"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+          <div className={inputSectionStyle}>
             <label>Тип палатки</label>
-            <select className={inputStyle}>
-              <option value="Призма">Призма</option>
-              <option value="Шатёр">Шатёр</option>
-              <option value="Сафари">Сафари-тент</option>
+            <select
+              className={inputStyle}
+              value={tentType}
+              onChange={(e) => setTentType(e.target.value)}
+            >
+              <option value="prisma">Призма</option>
+              <option value="shater">Шатёр</option>
+              <option value="safariTent">Сафари-тент</option>
             </select>
           </div>
           <div className={inputSectionStyle}>
-            <label>Дата бронироваиня</label>
-            <input className={inputStyle} type="datetime-local" />
+            <label>Дата въезда</label>
+            <input
+              className={inputStyle}
+              type="datetime-local"
+              value={checkInDate}
+              onChange={(e) => setCheckInDate(e.target.value)}
+            />
+          </div>
+          <div className={inputSectionStyle}>
+            <label>Дата выезда</label>
+            <input
+              className={inputStyle}
+              type="datetime-local"
+              value={checkOutDate}
+              onChange={(e) => setCheckOutDate(e.target.value)}
+            />
           </div>
           <div className={inputSectionStyle}>
             <label>Число взрослых</label>
@@ -85,34 +165,13 @@ export const BookForm = () => {
             </select>
           </div>
           <div className={inputSectionStyle}>
-            <label>E-mail</label>
-            <input
-              className={inputStyle}
-              type="text"
-              placeholder="Ваш e-mail"
-            />
-          </div>
-          <div className={inputSectionStyle}>
-            <label>Имя</label>
-            <input
-              className={inputStyle}
-              type="text"
-              placeholder="Ваше полное имя"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-          </div>
-          <div className={inputSectionStyle}>
-            <label>Телефон</label>
-            <input
-              className={inputStyle}
-              type="text"
-              placeholder="Ваш телефон"
-            />
-          </div>
-          <div className={inputSectionStyle}>
             <label>Комментарий</label>
-            <textarea className={inputStyle} placeholder="Ваш комментарий" />
+            <textarea
+              className={inputStyle}
+              placeholder="Ваш комментарий"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
           </div>
         </div>
         <button
