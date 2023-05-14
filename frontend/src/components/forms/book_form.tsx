@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import * as _dayjs from "dayjs";
+// import * as _dayjs from "dayjs";
 
-const dayjs = _dayjs;
+// const dayjs = _dayjs;
 
 const inputStyle = "w-full border-2 border-yellow-400 rounded-md p-2";
 const inputSectionStyle = "flex flex-col gap-2";
@@ -12,8 +12,8 @@ export const BookForm = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [tentType, setTentType] = useState("prisma");
-  const [checkInDate, setCheckInDate] = useState(dayjs().format());
-  const [checkOutDate, setCheckOutDate] = useState(dayjs().format());
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
   const [adult, setAdult] = useState(1);
   const [children, setChildren] = useState(0);
   const [comment, setComment] = useState("");
