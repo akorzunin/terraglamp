@@ -1,4 +1,5 @@
 import { Image, Carousel } from "antd";
+import { Link } from "react-router-dom";
 
 export const Options = () => {
   return (
@@ -35,9 +36,11 @@ export const Options = () => {
             до 12:00.
           </li>
         </ul>
-        <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
-          Забронировать
-        </button>
+        <Link to="/book?tentType=prisma">
+          <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+            Забронировать
+          </button>
+        </Link>
       </div>
       <div className="flex flex-col">
         <Carousel waitForAnimate>
@@ -64,9 +67,11 @@ export const Options = () => {
           </li>
           <li>Время заезда с 14:00 , время выезда до 12:00.</li>
         </ul>
-        <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
-          Забронировать
-        </button>
+        <Link to="/book">
+          <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+            Забронировать
+          </button>
+        </Link>
       </div>
       <div className="flex flex-col">
         <Carousel waitForAnimate>
@@ -94,9 +99,11 @@ export const Options = () => {
             до 12:00.
           </li>
         </ul>
-        <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
-          Забронировать
-        </button>
+        <Link to="/book?tentType=safaritent">
+          <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
+            Забронировать
+          </button>
+        </Link>
       </div>
     </div>
   );

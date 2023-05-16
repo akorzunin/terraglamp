@@ -2,6 +2,7 @@ import { Image, Space } from "antd";
 import { VK } from "../../icons/VK";
 import { Inst } from "../../icons/Inst";
 import { WhatsApp } from "../../icons/WhatsApp";
+import { Link } from "react-router-dom";
 
 export const HeaderMobile = () => {
   return (
@@ -20,9 +21,11 @@ export const HeaderMobile = () => {
         <Inst />
         <WhatsApp />
       </Space>
-      <button className="bg-amber-400 font-sans text-base font-bold pt-3 pb-3 pl-10 pr-10 rounded-full mt-5">
-        Забронировать
-      </button>
+      <Link to="/book">
+        <button className="bg-amber-400 font-sans text-base font-bold pt-3 pb-3 pl-10 pr-10 rounded-full mt-5">
+          Забронировать
+        </button>
+      </Link>
     </header>
   );
 };

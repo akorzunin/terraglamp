@@ -1,4 +1,5 @@
 import { Image, Carousel } from "antd";
+import { Link } from "react-router-dom";
 
 export const Actions = () => {
   return (
@@ -18,9 +19,11 @@ export const Actions = () => {
             месяц. Всем молодоженам мы дарим комплимент (бутылка шампанского и
             фрукты) и предлагаем множество скидок.
           </p>
-          <button className="w-52 h-12 drop-shadow-md rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white">
-            Забронировать
-          </button>
+          <Link to="/book">
+            <button className="w-52 h-12 drop-shadow-md rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white">
+              Забронировать
+            </button>
+          </Link>
         </div>
       </div>
       <div className="relative">
@@ -34,9 +37,11 @@ export const Actions = () => {
             конференции, спортивные соревнования и любые другие важные
             мероприятия для вашей компании: дни рождения, выходные, банкеты.
           </p>
-          <button className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white">
-            Забронировать
-          </button>
+          <Link to="/book">
+            <button className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white">
+              Забронировать
+            </button>
+          </Link>
         </div>
       </div>
       <div className="relative">
@@ -51,9 +56,11 @@ export const Actions = () => {
             больших свадебных вечеринок, когда праздничная программа рассчитана
             на несколько дней.
           </p>
-          <button className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-2 mb-8 text-white">
-            Забронировать
-          </button>
+          <Link to="/book">
+            <button className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-2 mb-8 text-white">
+              Забронировать
+            </button>
+          </Link>
         </div>
       </div>
     </Carousel>

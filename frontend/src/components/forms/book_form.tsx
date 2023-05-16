@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { FormValidationError } from "./FormValidationError";
 // import * as _dayjs from "dayjs";
 
 // const dayjs = _dayjs;
 
 const inputStyle = "w-full border-2 border-yellow-400 rounded-md p-2";
 const inputSectionStyle = "flex flex-col gap-2";
+const errorTextValidator = "text-red-500 text-xs";
 
 export const BookForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -18,12 +20,18 @@ export const BookForm = () => {
   const [children, setChildren] = useState(0);
   const [comment, setComment] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+  const [errorText, setErrorText] = useState("");
 
   useEffect(() => {
-    if (firstName.length > 0) {
-      setIsFormValid(true);
+    setIsFormValid(false);
+    if (firstName.length < 3) {
+      return;
     }
-  }, [firstName]);
+    if (lastName.length < 3) {
+      return;
+    }
+    setIsFormValid(true);
+  }, [firstName, lastName, email, phone, tentType, checkInDate, checkOutDate]);
 
   const submitForm = () => {
     console.log(import.meta.env.VITE_API_URL);
@@ -49,16 +57,19 @@ export const BookForm = () => {
     })
       .then((res) => {
         if (res.status === 200) {
-          window.location.href = "/#/booking-success";
+          window.location.href = "/#/booking-success"; // TODO: change to right redirect useNavigate()
           return res.json();
         }
+
         return res.json();
       })
       .then((data) => {
         console.info(data);
+        setErrorText(data.detail[0].msg);
       })
       .catch((err) => {
         console.error(err);
+        setErrorText(err.message);
       });
   };
   return (
@@ -68,8 +79,9 @@ export const BookForm = () => {
       </h2>
       <form
         onSubmit={submitForm}
-        className="flex flex-col gap-4 w-[80%] max-w-screen-md mx-auto text-start"
+        className="flex flex-col items-center gap-4 w-[80%] max-w-screen-md mx-auto text-start mb-8"
       >
+        {/* todo MAKE INPUT COMPONTENTS */}
         <div className="flex flex-col gap-4 mb-4 w-[80%] mx-auto text-start">
           <div className={inputSectionStyle}>
             <label>Имя</label>
@@ -80,6 +92,11 @@ export const BookForm = () => {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
+            {firstName.length < 3 && (
+              <p className={errorTextValidator}>
+                Имя должно быть больше 3 символов
+              </p>
+            )}
           </div>
           <div className={inputSectionStyle}>
             <label>Фамилия</label>
@@ -90,6 +107,11 @@ export const BookForm = () => {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
+            {lastName.length < 3 && (
+              <p className={errorTextValidator}>
+                Фамилия должно быть больше 3 символов
+              </p>
+            )}
           </div>
           <div className={inputSectionStyle}>
             <label>E-mail</label>
@@ -180,10 +202,11 @@ export const BookForm = () => {
         </div>
         <button
           disabled={!isFormValid}
-          className=" mx-auto bg-yellow-400 text-black rounded-3xl text-sm	 font-bold px-14 py-3 transition-colors hover:bg-orange-400 mb-8"
+          className="w-64 bg-yellow-400 text-black rounded-full text-sm font-bold py-3 transition-colors hover:bg-orange-400 disabled:bg-gray-400"
         >
           Забронировать аппартаменты
         </button>
+        <FormValidationError errorText={errorText} />
       </form>
     </>
   );
