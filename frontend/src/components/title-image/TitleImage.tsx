@@ -21,8 +21,13 @@ export const TitleImage: FC<ITitleImage> = ({ isHeader, text, image }) => {
         <p className="font-sans font-normal text-sm text-white pr-4">{text}</p>
         <div className="flex justijy-center mt-2">
           <DoubleRightOutlined
+            onClick={() => {
+              document
+                .querySelector("#header-gallery")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
             rotate={90}
-            className="m-auto text-white text-3xl"
+            className="m-auto text-white text-3xl animate-bounce hover:opacity-60 transition-opacity cursor-pointer"
           />
         </div>
       </div>

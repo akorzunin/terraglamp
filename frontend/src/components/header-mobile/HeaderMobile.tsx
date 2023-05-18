@@ -2,7 +2,7 @@ import { Image, Space } from "antd";
 import { VK } from "../../icons/VK";
 import { Inst } from "../../icons/Inst";
 import { WhatsApp } from "../../icons/WhatsApp";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const HeaderMobile = () => {
   const scrollTo = (id: string) => {
