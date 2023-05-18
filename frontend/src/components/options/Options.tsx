@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Options = () => {
   return (
-    <div className="mt-10 pr-2 pl-2">
+    <div className="mt-10 pr-2 pl-2" id="tents">
       <div className="flex flex-col">
         <h3 className="mb-8 font-sans font-bold text-2xl text-center">
           Варианты размещения

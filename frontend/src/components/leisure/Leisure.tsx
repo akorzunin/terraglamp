@@ -2,7 +2,7 @@ import { Image } from "antd";
 
 export const Leisure = () => {
   return (
-    <div className="flex flex-col items-center mt-10 pl-3 pr-3">
+    <div className="flex flex-col items-center mt-10 pl-3 pr-3" id="leisure">
       <h3 className="mb-4 font-sans font-bold text-3xl ">Развлечения</h3>
       <p className="mb-10 font-sans font-normal text-xl">
         На территории глэмпинга множество семейных развлечений на любой вкус

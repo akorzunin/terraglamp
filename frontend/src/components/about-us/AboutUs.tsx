@@ -2,7 +2,7 @@ import { TitleImage } from "../title-image/TitleImage";
 
 export const AboutUs = () => {
   return (
-    <div>
+    <div id="about-us">
       <div className="pl-2 pr-2 mt-10">
         <h3 className="mb-4 font-sans font-bold text-3xl ">О нас</h3>
         <p className="mb-10 font-sans font-normal text-xl">

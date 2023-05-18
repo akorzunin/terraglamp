@@ -5,14 +5,31 @@ import { WhatsApp } from "../../icons/WhatsApp";
 import { Link } from "react-router-dom";
 
 export const HeaderMobile = () => {
+  const scrollTo = (id: string) => {
+    const el = document.querySelector(`#${id}`);
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <header className="bg-[rgba(0,0,0,0.5)] flex flex-col items-center pt-5 pb-5">
       <Image src="./logo.jpg" width={80} height={80} />
-      <p className="font-sans font-normal text-sm text-white mt-8">О НАС</p>
-      <p className="font-sans font-normal text-sm text-white mt-2">
+      <p
+        className="font-sans font-normal text-sm text-white mt-8 hover:opacity-60 transition-opacity cursor-pointer"
+        onClick={() => scrollTo("about-us")}
+      >
+        О НАС
+      </p>
+      <p
+        className="font-sans font-normal text-sm text-white mt-2 hover:opacity-60 transition-opacity cursor-pointer"
+        onClick={() => scrollTo("leisure")}
+      >
         РАЗВЛЕЧЕНИЯ
       </p>
-      <p className="font-sans font-normal text-sm text-white mt-2">ПАЛАТКИ</p>
+      <p
+        className="font-sans font-normal text-sm text-white mt-2 hover:opacity-60 transition-opacity cursor-pointer"
+        onClick={() => scrollTo("tents")}
+      >
+        ПАЛАТКИ
+      </p>
       <p className="font-sans font-normal text-sm text-white mt-5">
         +7 912 700 95 65
       </p>
