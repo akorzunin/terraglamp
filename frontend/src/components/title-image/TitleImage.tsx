@@ -7,7 +7,11 @@ interface ITitleImage {
   image: string;
 }
 
-export const TitleImage: FC<ITitleImage> = ({ isHeader, text, image }) => {
+export const TitleImage: FC<ITitleImage> = ({
+  isHeader = false,
+  text,
+  image,
+}) => {
   return (
     <div className="relative">
       <img src={image} alt="Кемпинг" />
@@ -15,14 +19,19 @@ export const TitleImage: FC<ITitleImage> = ({ isHeader, text, image }) => {
         {isHeader && (
           <p className="font-sans font-bold text-3xl text-white">Глэмпинг</p>
         )}
-        <p className="font-sans font-bold text-3xl text-white mb-5 ">
+        <p className="font-sans font-bold text-3xl text-white mb-5">
           TERRA GLAMP
         </p>
         <p className="font-sans font-normal text-sm text-white pr-4">{text}</p>
         <div className="flex justijy-center mt-2">
           <DoubleRightOutlined
+            onClick={() => {
+              document
+                .querySelector(isHeader ? "#header-gallery" : "#leisure")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
             rotate={90}
-            className="m-auto text-white text-3xl"
+            className="m-auto text-white text-3xl animate-bounce hover:opacity-60 transition-opacity cursor-pointer"
           />
         </div>
       </div>

@@ -1,9 +1,13 @@
 import { Image, Carousel } from "antd";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+const buttonClassName =
+  "w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8";
 
 export const Options = () => {
+  const navigate = useNavigate();
   return (
-    <div className="mt-10 pr-2 pl-2">
+    <div className="mt-10 pr-2 pl-2" id="tents">
       <div className="flex flex-col">
         <h3 className="mb-8 font-sans font-bold text-2xl text-center">
           Варианты размещения
@@ -36,11 +40,12 @@ export const Options = () => {
             до 12:00.
           </li>
         </ul>
-        <Link to="/book?tentType=prisma">
-          <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
-            Забронировать
-          </button>
-        </Link>
+        <button
+          onClick={() => navigate("/book?tentType=prisma")}
+          className={`${buttonClassName}`}
+        >
+          Забронировать
+        </button>
       </div>
       <div className="flex flex-col">
         <Carousel waitForAnimate>
@@ -67,11 +72,12 @@ export const Options = () => {
           </li>
           <li>Время заезда с 14:00 , время выезда до 12:00.</li>
         </ul>
-        <Link to="/book">
-          <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
-            Забронировать
-          </button>
-        </Link>
+        <button
+          onClick={() => navigate("/book")}
+          className={`${buttonClassName}`}
+        >
+          Забронировать
+        </button>
       </div>
       <div className="flex flex-col">
         <Carousel waitForAnimate>
@@ -99,11 +105,12 @@ export const Options = () => {
             до 12:00.
           </li>
         </ul>
-        <Link to="/book?tentType=safaritent">
-          <button className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8">
-            Забронировать
-          </button>
-        </Link>
+        <button
+          onClick={() => navigate("/book?tentType=safaritent")}
+          className={`${buttonClassName}`}
+        >
+          Забронировать
+        </button>
       </div>
     </div>
   );

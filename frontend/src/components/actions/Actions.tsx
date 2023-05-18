@@ -1,7 +1,9 @@
+import { FC } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Image, Carousel } from "antd";
-import { Link } from "react-router-dom";
 
-export const Actions = () => {
+export const Actions: FC = () => {
+  const navigate = useNavigate();
   return (
     <Carousel waitForAnimate dots fade>
       <div className="relative">
@@ -19,11 +21,12 @@ export const Actions = () => {
             месяц. Всем молодоженам мы дарим комплимент (бутылка шампанского и
             фрукты) и предлагаем множество скидок.
           </p>
-          <Link to="/book">
-            <button className="w-52 h-12 drop-shadow-md rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white">
-              Забронировать
-            </button>
-          </Link>
+          <button
+            onClick={() => navigate("/book")}
+            className="w-52 h-12 drop-shadow-md rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white"
+          >
+            Забронировать
+          </button>
         </div>
       </div>
       <div className="relative">
@@ -38,7 +41,10 @@ export const Actions = () => {
             мероприятия для вашей компании: дни рождения, выходные, банкеты.
           </p>
           <Link to="/book">
-            <button className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white">
+            <button
+              onClick={() => navigate("/book")}
+              className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white"
+            >
               Забронировать
             </button>
           </Link>
@@ -57,7 +63,10 @@ export const Actions = () => {
             на несколько дней.
           </p>
           <Link to="/book">
-            <button className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-2 mb-8 text-white">
+            <button
+              onClick={() => navigate("/book")}
+              className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-2 mb-8 text-white"
+            >
               Забронировать
             </button>
           </Link>
