@@ -4,6 +4,10 @@ import { Inst } from "../../icons/Inst";
 import { WhatsApp } from "../../icons/WhatsApp";
 import { useNavigate } from "react-router-dom";
 
+const headerClassName = "font-sans font-normal text-sm text-white";
+const headerTitleClassName =
+  "hover:opacity-60 transition-opacity cursor-pointer";
+
 export const HeaderMobile = () => {
   const navigate = useNavigate();
 
@@ -15,26 +19,24 @@ export const HeaderMobile = () => {
     <header className="bg-[rgba(0,0,0,0.5)] flex flex-col items-center pt-5 pb-5">
       <Image src="./logo.jpg" width={80} height={80} />
       <p
-        className="font-sans font-normal text-sm text-white mt-8 hover:opacity-60 transition-opacity cursor-pointer"
+        className={`${headerClassName} mt-8 ${headerTitleClassName}`}
         onClick={() => scrollTo("about-us")}
       >
         О НАС
       </p>
       <p
-        className="font-sans font-normal text-sm text-white mt-2 hover:opacity-60 transition-opacity cursor-pointer"
+        className={`${headerClassName} mt-2 ${headerTitleClassName}`}
         onClick={() => scrollTo("leisure")}
       >
         РАЗВЛЕЧЕНИЯ
       </p>
       <p
-        className="font-sans font-normal text-sm text-white mt-2 hover:opacity-60 transition-opacity cursor-pointer"
+        className={`${headerClassName} mt-2 ${headerTitleClassName}`}
         onClick={() => scrollTo("tents")}
       >
         ПАЛАТКИ
       </p>
-      <p className="font-sans font-normal text-sm text-white mt-5">
-        +7 912 700 95 65
-      </p>
+      <p className={`${headerClassName} mt-5`}>+7 912 700 95 65</p>
       <Space className="justify-center mt-2">
         <VK />
         <Inst />

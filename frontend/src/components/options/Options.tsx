@@ -1,6 +1,9 @@
 import { Image, Carousel } from "antd";
 import { useNavigate } from "react-router-dom";
 
+const buttonClassName =
+  "w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8";
+
 export const Options = () => {
   const navigate = useNavigate();
   return (
@@ -39,7 +42,7 @@ export const Options = () => {
         </ul>
         <button
           onClick={() => navigate("/book?tentType=prisma")}
-          className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8"
+          className={`${buttonClassName}`}
         >
           Забронировать
         </button>
@@ -71,7 +74,7 @@ export const Options = () => {
         </ul>
         <button
           onClick={() => navigate("/book")}
-          className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8"
+          className={`${buttonClassName}`}
         >
           Забронировать
         </button>
@@ -104,7 +107,7 @@ export const Options = () => {
         </ul>
         <button
           onClick={() => navigate("/book?tentType=safaritent")}
-          className="w-52 h-12 ml-auto mr-auto rounded-full border-solid border-2 border-black font-sans font-normal text-base mt-5 mb-8"
+          className={`${buttonClassName}`}
         >
           Забронировать
         </button>
