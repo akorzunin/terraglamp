@@ -2,9 +2,11 @@ import { Image, Space } from "antd";
 import { VK } from "../../icons/VK";
 import { Inst } from "../../icons/Inst";
 import { WhatsApp } from "../../icons/WhatsApp";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const HeaderMobile = () => {
+  const navigate = useNavigate();
+
   const scrollTo = (id: string) => {
     const el = document.querySelector(`#${id}`);
     el?.scrollIntoView({ behavior: "smooth" });
@@ -38,11 +40,12 @@ export const HeaderMobile = () => {
         <Inst />
         <WhatsApp />
       </Space>
-      <Link to="/book">
-        <button className="bg-amber-400 font-sans text-base font-bold pt-3 pb-3 pl-10 pr-10 rounded-full mt-5">
-          Забронировать
-        </button>
-      </Link>
+      <button
+        onClick={() => navigate("/book")}
+        className="bg-amber-400 font-sans text-base font-bold pt-3 pb-3 pl-10 pr-10 rounded-full mt-5"
+      >
+        Забронировать
+      </button>
     </header>
   );
 };
