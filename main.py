@@ -4,7 +4,8 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.routes.api_router import router as api_router
+from backend.routes import api_router
+from backend.admin.app import admin
 from backend.settings import DEBUG, FRONTEND_HOST
 
 
@@ -30,14 +31,11 @@ if DEBUG:
     )
 
 app.include_router(
-    api_router,
+    api_router.router,
     prefix="/api",
 )
 
-
-@app.get("/")
-async def root():
-    return RedirectResponse(FRONTEND_HOST)
+admin.mount_to(app)
 
 
 if __name__ == "__main__":
