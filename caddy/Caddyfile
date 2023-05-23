@@ -7,7 +7,7 @@
 	}
 
 	handle /api/* {
-		reverse_proxy terraglamp:{$API_PORT}
+		reverse_proxy terraglamp:{$API_PORT:-8888}
 	}
 	redir /dbview /dbview/
 	handle /dbview/* {
