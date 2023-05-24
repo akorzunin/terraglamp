@@ -12,6 +12,9 @@
 	redir /admin /admin/
 	handle /admin/* {
 		reverse_proxy terraglamp:{$API_PORT}
+		basicauth {
+			admin {$DBVIEW_PASS}
+		}
 	}
 	redir /dbview /dbview/
 	handle /dbview/* {
