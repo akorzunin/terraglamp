@@ -9,6 +9,10 @@
 	handle /api/* {
 		reverse_proxy terraglamp:{$API_PORT:-8888}
 	}
+	redir /admin /admin/
+	handle /admin/* {
+		reverse_proxy terraglamp:{$API_PORT}
+	}
 	redir /dbview /dbview/
 	handle /dbview/* {
 		reverse_proxy mongo-express:8081
