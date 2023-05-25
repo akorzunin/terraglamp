@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Админка сайта терраглэмп</h1>
+<a href="/">
+    <p><strong>
+            Главная страница
+        </strong>
+    </p>
+</a>
+<a href="/dbview">
+    <p>Редактор базы данных</p>
+</a>
+<a href="/api/docs">
+    <p>Документация по АПИ</p>
+</a>
+<a target="_blank"
+    rel="noopener noreferrer"
+    href="https://github.com/users/akorzunin/projects/3">
+    <p>Доска с задачами по проекту</p>
+</a>
+
+{% endblock %}
