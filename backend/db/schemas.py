@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 from typing import Literal
 from pydantic import BaseModel, EmailStr, Field
 from pydantic.validators import strict_str_validator
@@ -46,6 +47,12 @@ class PyObjectId(ObjectId):
 
 
 TentType = Literal["prisma", "shater", "safariTent"]
+
+
+class TentTypeEnum(str, Enum):
+    Призма = "prisma"
+    Шатер = "shater"
+    СафариТент = "safariTent"
 
 
 class BookingForm(BaseModel):

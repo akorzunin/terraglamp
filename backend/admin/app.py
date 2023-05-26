@@ -10,6 +10,7 @@ db = TinyDB("db.json")
 
 admin = Admin(
     templates_dir="./backend/admin/templates",
+    title="Админка терраглэмп",
     index_view=CustomView(
         label="Home", icon="fa fa-home", path="/home", template_path="home.html"
     ),
@@ -17,3 +18,4 @@ admin = Admin(
 
 admin.templates.env.globals["is_debug"] = lambda: DEBUG
 admin.add_view(PostView(db))
+# admin.add_view(PostView(db))

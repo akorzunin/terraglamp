@@ -1,17 +1,22 @@
+from enum import Enum
 from operator import attrgetter
 from typing import Any, Dict, List, Optional, Sequence, Union
 
 from starlette.requests import Request
 from starlette_admin import (
     BaseModelView,
-    CollectionField,
     IntegerField,
-    ListField,
     StringField,
-    TextAreaField,
+    DateField,
+    EnumField,
+    PhoneField,
+    EmailField,
+    BooleanField,
 )
 from starlette_admin.exceptions import FormValidationError
 from tinydb import TinyDB
+
+from backend.db.schemas import TentTypeEnum
 from .models import Post
 
 
@@ -22,18 +27,25 @@ class PostView(BaseModelView):
     icon = "fa fa-book"
     pk_attr = "id"
     fields = [
-        IntegerField("id"),
-        StringField("title"),
-        TextAreaField("body"),
-        ListField(StringField("tags")),
-        ListField(
-            CollectionField(
-                "comments",
-                fields=[
-                    StringField("username"),
-                    StringField("body", help_text="Please, be kind"),
-                ],
-            ),
+        StringField("first_name", label="Имя"),
+        StringField("last_name", label="Фамилия"),
+        EmailField("email", label="Email"),
+        PhoneField("phone", label="Телефон"),
+        StringField("tent_type", label="Тип палатки"),
+        DateField("check_in_date", label="Дата заезда"),
+        DateField("check_out_date", label="Дата выезда"),
+        StringField("adults", label="Число взрослых"),
+        IntegerField("children", label="Числа детей (дополнитлеьные места)"),
+        IntegerField("message", label="Сообщение"),
+        EnumField(
+            "tent_type",
+            enum=TentTypeEnum,
+            label="Тип палатки",
+        ),
+        BooleanField(
+            "is_active",
+            label="Бронь активна",
+            help_text="Поставить если бронь актуальна",
         ),
     ]
     sortable_fields = ("id", "title", "content")
