@@ -2,7 +2,8 @@ from starlette_admin import BaseAdmin as Admin
 from starlette_admin.views import CustomView
 from tinydb import TinyDB
 
-from backend.admin.view import PostView
+from backend.admin.view import NewBookingView
+from backend.admin.views.all_bookings_view import AllbookingsView
 from backend.settings import DEBUG
 
 db = TinyDB("db.json")
@@ -17,5 +18,5 @@ admin = Admin(
 )
 
 admin.templates.env.globals["is_debug"] = lambda: DEBUG
-admin.add_view(PostView(db))
-# admin.add_view(PostView(db))
+admin.add_view(NewBookingView(db))
+admin.add_view(AllbookingsView())

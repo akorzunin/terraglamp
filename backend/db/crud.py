@@ -72,3 +72,15 @@ async def create_booking(booking: BookingModel) -> str:
     raw_booking: RawBSONDocument = jsonable_encoder(booking)
     new_booking = await bookings.insert_one(raw_booking)
     return new_booking.inserted_id
+
+
+async def get_all_bookings():
+    async for doc in bookings.find():
+        yield BookingModel(**doc)
+
+
+async def get_booking_by_filter(filter: str | dict):
+    if isinstance(filter, str):
+        return
+    async for doc in bookings.find(filter):
+        yield BookingModel(**doc)
