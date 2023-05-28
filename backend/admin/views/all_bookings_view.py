@@ -5,9 +5,6 @@ from starlette_admin import (
     IntegerField,
     StringField,
     DateField,
-    EnumField,
-    PhoneField,
-    EmailField,
     BooleanField,
 )
 from operator import attrgetter
@@ -15,7 +12,7 @@ from operator import attrgetter
 from backend.db import crud
 
 
-class AllbookingsView(BaseModelView):
+class AllBookingsView(BaseModelView):
     identity = "all-bookings"
     name = "Все бронирования"
     label = "Все бронирования"
