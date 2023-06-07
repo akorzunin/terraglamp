@@ -16,6 +16,7 @@ pydantic = {extras = ["email"], version = "^1.10.7"}
 phonenumbers = "^8.13.11"
 starlette-admin = "^0.8.2"
 tinydb = "^4.7.1"
+fastapi-mail = "^1.2.8"
 
 
 [tool.poetry.group.dev.dependencies]
