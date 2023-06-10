@@ -10,11 +10,13 @@
       "justMyCode": true
     },
     {
-      "name": "Launch Chrome",
-      "request": "launch",
       "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against vite dev server",
       "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}/frontend"
+      "webRoot": "${workspaceFolder}/frontend",
+      "userDataDir": "Debug",
+      "runtimeArgs": ["--profile-directory=debug-profile"]
     },
     {
       "name": "Docker: Python - Fastapi",
