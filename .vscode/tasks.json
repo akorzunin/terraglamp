@@ -28,6 +28,14 @@
       "problemMatcher": [],
       "label": "npm: dev - frontend",
       "detail": "vite"
+    },
+    {
+      "type": "npm",
+      "script": "generate-client",
+      "path": "frontend",
+      "problemMatcher": [],
+      "label": "npm: generate-client - frontend",
+      "detail": "openapi --input http://localhost:8888/api/openapi.json --output ./src/api/client --client typescript-fetch"
     }
   ]
 }

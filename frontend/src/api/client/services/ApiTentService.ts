@@ -7,16 +7,16 @@ import { request as __request } from '../core/request';
 
 export class ApiTentService {
 
-    /**
-     * Is Available
-     * @returns any Successful Response
-     * @throws ApiError
-     */
-    public static isAvailableApiTentIsAvailableGet(): CancelablePromise<any> {
-        return __request(OpenAPI, {
-            method: 'GET',
-            url: '/api/tent/is-available',
-        });
-    }
+  /**
+   * Is Available
+   * @returns any Successful Response
+   * @throws ApiError
+   */
+  public static isAvailableApiTentIsAvailableGet(): CancelablePromise<any> {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/api/tent/is-available',
+    });
+  }
 
 }
