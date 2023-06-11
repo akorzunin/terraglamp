@@ -3,14 +3,17 @@ from bson.raw_bson import RawBSONDocument
 from fastapi.encoders import jsonable_encoder
 from fastapi import HTTPException
 
-from backend.db.schemas import BookingForm, BookingModel, UserModel
+from backend.db.schemas import BookingForm, BookingModel, UserModel, Message
 from backend.db import crud
 
 router = APIRouter()
 
 
-@router.post("/")
-async def booking(booking: BookingForm):
+@router.post(
+    "/",
+    responses={409: {"model": Message}},
+)
+async def booking(booking: BookingForm) -> str:
     """Create booking order"""
     # check if user in database
     if not (user := await crud.find_user_by_email(booking.email)):

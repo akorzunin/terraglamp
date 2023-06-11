@@ -13,18 +13,19 @@ export class ApiBookingService {
    * Booking
    * Create booking order
    * @param requestBody 
-   * @returns any Successful Response
+   * @returns string Successful Response
    * @throws ApiError
    */
   public static bookingApiBookingPost(
 requestBody: BookingForm,
-): CancelablePromise<any> {
+): CancelablePromise<string> {
     return __request(OpenAPI, {
       method: 'POST',
       url: '/api/booking/',
       body: requestBody,
       mediaType: 'application/json',
       errors: {
+        409: `Conflict`,
         422: `Validation Error`,
       },
     });

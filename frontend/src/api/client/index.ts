@@ -8,6 +8,7 @@ export type { OpenAPIConfig } from './core/OpenAPI';
 
 export { BookingForm } from './models/BookingForm';
 export type { HTTPValidationError } from './models/HTTPValidationError';
+export type { Message } from './models/Message';
 export type { UserEmail } from './models/UserEmail';
 export type { ValidationError } from './models/ValidationError';
 

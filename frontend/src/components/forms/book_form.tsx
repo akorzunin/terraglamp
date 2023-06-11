@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { FormValidationError } from "./FormValidationError";
+import { useNavigate } from "react-router-dom";
+import { createBooking } from "../../api/booking";
+import { BookingForm } from "../../api/client";
 // import * as _dayjs from "dayjs";
-
 // const dayjs = _dayjs;
 
 const inputStyle = "w-full border-2 border-yellow-400 rounded-md p-2";
@@ -13,14 +15,18 @@ export const BookForm = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [tentType, setTentType] = useState("prisma");
+  const [tentType, setTentType] = useState<BookingForm.tent_type>(
+    BookingForm.tent_type.PRISMA
+  );
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [adult, setAdult] = useState(1);
   const [children, setChildren] = useState(0);
   const [comment, setComment] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
-  const [errorText, setErrorText] = useState("");
+  const [errorText, setErrorText] = useState<string[]>([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsFormValid(false);
@@ -33,44 +39,29 @@ export const BookForm = () => {
     setIsFormValid(true);
   }, [firstName, lastName, email, phone, tentType, checkInDate, checkOutDate]);
 
-  const submitForm = () => {
+  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log(import.meta.env.VITE_API_URL);
-
-    fetch(`${import.meta.env.VITE_API_URL}/api/booking`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        phone: phone,
-        tent_type: tentType,
-        check_in_date: checkInDate,
-        check_out_date: checkOutDate,
-        adults: adult,
-        children: children,
-        total_members: adult + children,
-      }),
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          window.location.href = "/#/booking-success"; // TODO: change to right redirect useNavigate()
-          return res.json();
-        }
-
-        return res.json();
-      })
-      .then((data) => {
-        console.info(data);
-        setErrorText(data.detail[0].msg);
-      })
-      .catch((err) => {
-        console.error(err);
-        setErrorText(err.message);
-      });
+    const res = await createBooking({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone,
+      tent_type: tentType,
+      check_in_date: checkInDate,
+      check_out_date: checkOutDate,
+      adults: adult,
+      children: children,
+      total_members: adult + children,
+    });
+    if (!res.success) {
+      console.error(res.message);
+      setErrorText(res.message);
+      return;
+    }
+    setErrorText([]);
+    navigate("/booking-success");
+    return;
   };
   return (
     <>
@@ -86,6 +77,7 @@ export const BookForm = () => {
           <div className={inputSectionStyle}>
             <label>Имя</label>
             <input
+              name="first_name"
               className={inputStyle}
               type="text"
               placeholder="Ваше полное имя"
@@ -138,7 +130,9 @@ export const BookForm = () => {
             <select
               className={inputStyle}
               value={tentType}
-              onChange={(e) => setTentType(e.target.value)}
+              onSelect={(e) =>
+                setTentType(e.currentTarget.value as BookingForm.tent_type)
+              }
             >
               <option value="prisma">Призма</option>
               <option value="shater">Шатёр</option>
