@@ -1,4 +1,4 @@
-import { ApiError, BookingForm, HTTPValidationError, Message } from "./client";
+import { ApiError, BookingForm, HTTPValidationError } from "./client";
 import { ApiBookingService } from "./client/services/ApiBookingService";
 
 interface ApiResponse {
@@ -18,7 +18,10 @@ export const createBooking = async (req: BookingForm): Promise<ApiResponse> => {
       }
       if (err.status == 409) {
         // Conflict
-        return { success: false, message: parseConfloctError(err.body) };
+        return {
+          success: false,
+          message: ["Нет доступных палаток на этот период"],
+        };
       }
       console.error(err);
     }
@@ -31,10 +34,6 @@ const parseValidationError = (error: HTTPValidationError): string[] => {
     return ["Ошибка валидации"];
   }
   return error.detail.map((x) => {
-    return `${x.loc}: ${x.msg}`;
+    return `${x.loc.join(".")}: ${x.msg}`;
   });
-};
-
-const parseConfloctError = (error: Message): string[] => {
-  return [error.detail];
 };

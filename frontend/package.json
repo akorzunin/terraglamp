@@ -12,15 +12,19 @@
     "generate-client": "openapi --input http://localhost:8888/api/openapi.json --output ./src/api/client --client fetch --indent 2"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.4.7",
     "dayjs": "^1.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.0"
+    "react-redux": "^8.0.7",
+    "react-router-dom": "^6.11.0",
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
+    "@types/react-redux": "^7.1.25",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react-swc": "^3.0.0",
@@ -30,6 +34,7 @@
     "eslint-plugin-react-refresh": "^0.3.4",
     "openapi-typescript-codegen": "^0.24.0",
     "postcss": "^8.4.23",
+    "redux-devtools-extension": "^2.13.9",
     "tailwindcss": "^3.3.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.0"
