@@ -28,5 +28,11 @@
     "ngClass",
     ".*Styles",
     ".*ClassName"
+  ],
+  "editor.rulers": [
+    {
+      "column": 80,
+      "color": "#eff30e"
+    }
   ]
 }
