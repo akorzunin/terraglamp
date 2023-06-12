@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./reducers/counterReducer";
+import { bookingFormSlice } from "./reducers/bookingFormReduser";
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
+  bookingForm: bookingFormSlice.reducer,
 });
 
 export const store = configureStore({

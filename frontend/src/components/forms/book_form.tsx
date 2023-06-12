@@ -1,10 +1,22 @@
+import dayjs from "dayjs/esm/index.js";
+
 import { useEffect, useState } from "react";
 import { FormValidationError } from "./FormValidationError";
 import { useNavigate } from "react-router-dom";
 import { createBooking } from "../../api/booking";
 import { BookingForm } from "../../api/client";
-// import * as _dayjs from "dayjs";
-// const dayjs = _dayjs;
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import {
+  setFormAdults,
+  setFormCheckInDate,
+  setFormCheckOutDate,
+  setFormEmail,
+  setFormFirstName,
+  setFormLastName,
+  setFormPhone,
+  validateForm,
+} from "../../store/reducers/bookingFormReduser";
 
 const inputStyle = "w-full border-2 border-yellow-400 rounded-md p-2";
 const inputSectionStyle = "flex flex-col gap-2";
@@ -28,20 +40,37 @@ export const BookForm = () => {
 
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+  const bookingForm = useTypedSelector((state) => state.bookingForm);
   useEffect(() => {
-    setIsFormValid(false);
-    if (firstName.length < 3) {
-      return;
+    if (
+      // check if required fields filled
+      (bookingForm.first_name &&
+        bookingForm.last_name &&
+        bookingForm.email &&
+        bookingForm.phone &&
+        bookingForm.tent_type &&
+        // bookingForm.check_in_date &&
+        // bookingForm.check_out_date &&
+        bookingForm.adults) ||
+      bookingForm.isFormValid
+    ) {
+      dispatch(validateForm());
     }
-    if (lastName.length < 3) {
-      return;
-    }
-    setIsFormValid(true);
-  }, [firstName, lastName, email, phone, tentType, checkInDate, checkOutDate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    bookingForm.first_name,
+    bookingForm.last_name,
+    bookingForm.email,
+    bookingForm.phone,
+    bookingForm.tent_type,
+    bookingForm.check_in_date,
+    bookingForm.check_out_date,
+    bookingForm.adults,
+  ]);
 
-  const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+  async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(import.meta.env.VITE_API_URL);
     const res = await createBooking({
       first_name: firstName,
       last_name: lastName,
@@ -56,13 +85,18 @@ export const BookForm = () => {
     });
     if (!res.success) {
       console.error(res.message);
+      if (typeof res.message === "string") {
+        setErrorText([res.message]);
+        return;
+      }
       setErrorText(res.message);
       return;
     }
     setErrorText([]);
     navigate("/booking-success");
     return;
-  };
+  }
+
   return (
     <>
       <h2 className="text-center py-4 text-2xl">
@@ -81,10 +115,10 @@ export const BookForm = () => {
               className={inputStyle}
               type="text"
               placeholder="Ваше полное имя"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              defaultValue={firstName}
+              onChange={(e) => dispatch(setFormFirstName(e.target.value))}
             />
-            {firstName.length < 3 && (
+            {bookingForm.firstNameError && (
               <p className={errorTextValidator}>
                 Имя должно быть больше 3 символов
               </p>
@@ -96,10 +130,10 @@ export const BookForm = () => {
               className={inputStyle}
               type="text"
               placeholder="Ваша фамилия"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              defaultValue={lastName}
+              onChange={(e) => dispatch(setFormLastName(e.target.value))}
             />
-            {lastName.length < 3 && (
+            {bookingForm.lastNameError && (
               <p className={errorTextValidator}>
                 Фамилия должно быть больше 3 символов
               </p>
@@ -111,9 +145,14 @@ export const BookForm = () => {
               className={inputStyle}
               type="email"
               placeholder="Ваш e-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              defaultValue={email}
+              onChange={(e) => dispatch(setFormEmail(e.target.value))}
             />
+            {bookingForm.emailError && (
+              <p className={errorTextValidator}>
+                Неправильный формат электронной почты
+              </p>
+            )}
           </div>
           <div className={inputSectionStyle}>
             <label>Телефон</label>
@@ -121,22 +160,25 @@ export const BookForm = () => {
               className={inputStyle}
               type="tel"
               placeholder="Ваш телефон"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              defaultValue={phone}
+              onChange={(e) => dispatch(setFormPhone(e.target.value))}
             />
+            {bookingForm.phoneError && (
+              <p className={errorTextValidator}>Неправильный формат телефона</p>
+            )}
           </div>
           <div className={inputSectionStyle}>
             <label>Тип палатки</label>
             <select
               className={inputStyle}
-              value={tentType}
+              defaultValue={tentType}
               onSelect={(e) =>
                 setTentType(e.currentTarget.value as BookingForm.tent_type)
               }
             >
-              <option value="prisma">Призма</option>
-              <option value="shater">Шатёр</option>
-              <option value="safariTent">Сафари-тент</option>
+              <option defaultValue="prisma">Призма</option>
+              <option defaultValue="shater">Шатёр</option>
+              <option defaultValue="safariTent">Сафари-тент</option>
             </select>
           </div>
           <div className={inputSectionStyle}>
@@ -144,8 +186,8 @@ export const BookForm = () => {
             <input
               className={inputStyle}
               type="datetime-local"
-              value={checkInDate}
-              onChange={(e) => setCheckInDate(e.target.value)}
+              defaultValue={checkInDate}
+              onChange={(e) => dispatch(setFormCheckInDate(e.target.value))}
             />
           </div>
           <div className={inputSectionStyle}>
@@ -153,35 +195,37 @@ export const BookForm = () => {
             <input
               className={inputStyle}
               type="datetime-local"
-              value={checkOutDate}
-              onChange={(e) => setCheckOutDate(e.target.value)}
+              defaultValue={checkOutDate}
+              onChange={(e) => dispatch(setFormCheckOutDate(e.target.value))}
             />
           </div>
           <div className={inputSectionStyle}>
             <label>Число взрослых</label>
             <select
               className={inputStyle}
-              value={adult}
-              onChange={(e) => setAdult(parseInt(e.target.value))}
+              defaultValue={adult}
+              onChange={(e) =>
+                dispatch(setFormAdults(parseInt(e.target.value)))
+              }
             >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              <option defaultValue="1">1</option>
+              <option defaultValue="2">2</option>
+              <option defaultValue="3">3</option>
+              <option defaultValue="4">4</option>
             </select>
           </div>
           <div className={inputSectionStyle}>
-            <label>Число детей</label>
+            <label>Число детей (Дополнительные места)</label>
             <select
               className={inputStyle}
-              value={children}
+              defaultValue={children}
               onChange={(e) => setChildren(parseInt(e.target.value))}
             >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
+              <option defaultValue="0">0</option>
+              <option defaultValue="1">1</option>
+              <option defaultValue="2">2</option>
+              <option defaultValue="3">3</option>
+              <option defaultValue="4">4</option>
             </select>
           </div>
           <div className={inputSectionStyle}>
@@ -189,13 +233,13 @@ export const BookForm = () => {
             <textarea
               className={inputStyle}
               placeholder="Ваш комментарий"
-              value={comment}
+              defaultValue={comment}
               onChange={(e) => setComment(e.target.value)}
             />
           </div>
         </div>
         <button
-          disabled={!isFormValid}
+          disabled={!bookingForm.isFormValid}
           className="w-64 bg-yellow-400 text-black rounded-full text-sm font-bold py-3 transition-colors hover:bg-orange-400 disabled:bg-gray-400"
         >
           Забронировать аппартаменты
