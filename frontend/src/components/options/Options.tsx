@@ -73,7 +73,7 @@ export const Options = () => {
           <li>Время заезда с 14:00 , время выезда до 12:00.</li>
         </ul>
         <button
-          onClick={() => navigate("/book")}
+          onClick={() => navigate("/booking")}
           className={`${buttonClassName}`}
         >
           Забронировать

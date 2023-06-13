@@ -22,7 +22,7 @@ export const Actions: FC = () => {
             фрукты) и предлагаем множество скидок.
           </p>
           <button
-            onClick={() => navigate("/book")}
+            onClick={() => navigate("/booking")}
             className="w-52 h-12 drop-shadow-md rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white"
           >
             Забронировать
@@ -40,9 +40,9 @@ export const Actions: FC = () => {
             конференции, спортивные соревнования и любые другие важные
             мероприятия для вашей компании: дни рождения, выходные, банкеты.
           </p>
-          <Link to="/book">
+          <Link to="/booking">
             <button
-              onClick={() => navigate("/book")}
+              onClick={() => navigate("/booking")}
               className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-5 mb-8 text-white"
             >
               Забронировать
@@ -62,9 +62,9 @@ export const Actions: FC = () => {
             больших свадебных вечеринок, когда праздничная программа рассчитана
             на несколько дней.
           </p>
-          <Link to="/book">
+          <Link to="/booking">
             <button
-              onClick={() => navigate("/book")}
+              onClick={() => navigate("/booking")}
               className="w-52 h-12 drop-shadow rounded-full border-solid border-2 border-white font-sans font-normal text-base mt-2 mb-8 text-white"
             >
               Забронировать

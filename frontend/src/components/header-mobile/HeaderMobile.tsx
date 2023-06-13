@@ -43,7 +43,7 @@ export const HeaderMobile = () => {
         <WhatsApp />
       </Space>
       <button
-        onClick={() => navigate("/book")}
+        onClick={() => navigate("/booking")}
         className="bg-amber-400 font-sans text-base font-bold pt-3 pb-3 pl-10 pr-10 rounded-full mt-5"
       >
         Забронировать

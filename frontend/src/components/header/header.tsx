@@ -22,7 +22,7 @@ export const Header = () => {
           </div>
           <button
             className="bg-yellow-400 text-black rounded-3xl text-sm	 font-bold px-7 py-2 transition-colors hover:bg-orange-400"
-            onClick={() => navigate("/book")}
+            onClick={() => navigate("/booking")}
           >
             Забронировать
           </button>
