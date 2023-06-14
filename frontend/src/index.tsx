@@ -9,13 +9,17 @@ import { store } from "./store/store";
 
 // override the default OpenAPI config from codegen
 import "./api/config";
+import { ConfigProvider } from "antd";
+import ruRU from "antd/locale/ru_RU";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
+      <ConfigProvider locale={ruRU}>
+        <Router>
+          <App />
+        </Router>
+      </ConfigProvider>
     </Provider>
   </React.StrictMode>
 );
