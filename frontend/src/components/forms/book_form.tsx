@@ -1,4 +1,4 @@
-import dayjs from "dayjs/esm/index.js";
+// import dayjs from "dayjs/esm/";
 
 import { useEffect, useState } from "react";
 import { FormValidationError } from "./FormValidationError";
@@ -17,31 +17,28 @@ import {
   setFormPhone,
   validateForm,
 } from "../../store/reducers/bookingFormReduser";
+import { DatePicker } from "antd";
+import dayjs from "dayjs";
+
+const { RangePicker } = DatePicker;
+const dateFormat = "DD.MM.YYYY";
 
 const inputStyle = "w-full border-2 border-yellow-400 rounded-md p-2";
 const inputSectionStyle = "flex flex-col gap-2";
 const errorTextValidator = "text-red-500 text-xs";
 
 export const BookForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [tentType, setTentType] = useState<BookingForm.tent_type>(
     BookingForm.tent_type.PRISMA
   );
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
-  const [adult, setAdult] = useState(1);
   const [children, setChildren] = useState(0);
   const [comment, setComment] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false);
   const [errorText, setErrorText] = useState<string[]>([]);
 
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const bookingForm = useTypedSelector((state) => state.bookingForm);
+
   useEffect(() => {
     if (
       // check if required fields filled
@@ -72,16 +69,16 @@ export const BookForm = () => {
   async function submitForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const res = await createBooking({
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      phone: phone,
-      tent_type: tentType,
-      check_in_date: checkInDate,
-      check_out_date: checkOutDate,
-      adults: adult,
-      children: children,
-      total_members: adult + children,
+      first_name: bookingForm.first_name,
+      last_name: bookingForm.last_name,
+      email: bookingForm.email,
+      phone: bookingForm.phone,
+      tent_type: bookingForm.tent_type,
+      check_in_date: bookingForm.check_in_date,
+      check_out_date: bookingForm.check_out_date,
+      adults: bookingForm.adults,
+      children: bookingForm.children,
+      total_members: bookingForm.adults + bookingForm.children,
     });
     if (!res.success) {
       console.error(res.message);
@@ -96,7 +93,6 @@ export const BookForm = () => {
     navigate("/booking-success");
     return;
   }
-
   return (
     <>
       <h2 className="text-center py-4 text-2xl">
@@ -115,7 +111,7 @@ export const BookForm = () => {
               className={inputStyle}
               type="text"
               placeholder="Ваше полное имя"
-              defaultValue={firstName}
+              defaultValue={bookingForm.first_name}
               onChange={(e) => dispatch(setFormFirstName(e.target.value))}
             />
             {bookingForm.firstNameError && (
@@ -130,7 +126,7 @@ export const BookForm = () => {
               className={inputStyle}
               type="text"
               placeholder="Ваша фамилия"
-              defaultValue={lastName}
+              defaultValue={bookingForm.last_name}
               onChange={(e) => dispatch(setFormLastName(e.target.value))}
             />
             {bookingForm.lastNameError && (
@@ -145,7 +141,7 @@ export const BookForm = () => {
               className={inputStyle}
               type="email"
               placeholder="Ваш e-mail"
-              defaultValue={email}
+              defaultValue={bookingForm.email}
               onChange={(e) => dispatch(setFormEmail(e.target.value))}
             />
             {bookingForm.emailError && (
@@ -160,7 +156,7 @@ export const BookForm = () => {
               className={inputStyle}
               type="tel"
               placeholder="Ваш телефон"
-              defaultValue={phone}
+              defaultValue={bookingForm.phone}
               onChange={(e) => dispatch(setFormPhone(e.target.value))}
             />
             {bookingForm.phoneError && (
@@ -182,11 +178,26 @@ export const BookForm = () => {
             </select>
           </div>
           <div className={inputSectionStyle}>
+            <label>Период бронирования</label>
+            <RangePicker
+              className={inputStyle}
+              disabledDate={(currentDate) => {
+                return currentDate.isBefore(dayjs());
+              }}
+              defaultValue={[
+                dayjs("13.06.2023", dateFormat),
+                dayjs("13.06.2023", dateFormat),
+              ]}
+              format={dateFormat}
+              size="large"
+            />
+          </div>
+          <div className={inputSectionStyle}>
             <label>Дата въезда</label>
             <input
               className={inputStyle}
               type="datetime-local"
-              defaultValue={checkInDate}
+              defaultValue={bookingForm.check_in_date}
               onChange={(e) => dispatch(setFormCheckInDate(e.target.value))}
             />
           </div>
@@ -195,7 +206,7 @@ export const BookForm = () => {
             <input
               className={inputStyle}
               type="datetime-local"
-              defaultValue={checkOutDate}
+              defaultValue={bookingForm.check_out_date}
               onChange={(e) => dispatch(setFormCheckOutDate(e.target.value))}
             />
           </div>
@@ -203,7 +214,7 @@ export const BookForm = () => {
             <label>Число взрослых</label>
             <select
               className={inputStyle}
-              defaultValue={adult}
+              defaultValue={bookingForm.adults}
               onChange={(e) =>
                 dispatch(setFormAdults(parseInt(e.target.value)))
               }
