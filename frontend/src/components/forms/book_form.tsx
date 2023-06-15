@@ -105,6 +105,35 @@ export const BookForm = () => {
         {/* todo MAKE INPUT COMPONTENTS */}
         <div className="flex flex-col gap-4 mb-4 w-[80%] mx-auto text-start">
           <div className={inputSectionStyle}>
+            <label>Тип палатки</label>
+            <select
+              className={inputStyle}
+              defaultValue={tentType}
+              onSelect={(e) =>
+                setTentType(e.currentTarget.value as BookingForm.tent_type)
+              }
+            >
+              <option defaultValue="prisma">Призма</option>
+              <option defaultValue="shater">Шатёр</option>
+              <option defaultValue="safariTent">Сафари-тент</option>
+            </select>
+          </div>
+          <div className={inputSectionStyle}>
+            <label>Период бронирования</label>
+            <RangePicker
+              className={inputStyle}
+              disabledDate={(currentDate) => {
+                return currentDate.isBefore(dayjs());
+              }}
+              placement="bottomRight"
+              format={dateFormat}
+              size="large"
+              picker="date"
+              onChange={() => {}}
+              onOk={() => {}}
+            />
+          </div>
+          <div className={inputSectionStyle}>
             <label>Имя</label>
             <input
               name="first_name"
@@ -162,35 +191,6 @@ export const BookForm = () => {
             {bookingForm.phoneError && (
               <p className={errorTextValidator}>Неправильный формат телефона</p>
             )}
-          </div>
-          <div className={inputSectionStyle}>
-            <label>Тип палатки</label>
-            <select
-              className={inputStyle}
-              defaultValue={tentType}
-              onSelect={(e) =>
-                setTentType(e.currentTarget.value as BookingForm.tent_type)
-              }
-            >
-              <option defaultValue="prisma">Призма</option>
-              <option defaultValue="shater">Шатёр</option>
-              <option defaultValue="safariTent">Сафари-тент</option>
-            </select>
-          </div>
-          <div className={inputSectionStyle}>
-            <label>Период бронирования</label>
-            <RangePicker
-              className={inputStyle}
-              disabledDate={(currentDate) => {
-                return currentDate.isBefore(dayjs());
-              }}
-              defaultValue={[
-                dayjs("13.06.2023", dateFormat),
-                dayjs("13.06.2023", dateFormat),
-              ]}
-              format={dateFormat}
-              size="large"
-            />
           </div>
           <div className={inputSectionStyle}>
             <label>Дата въезда</label>

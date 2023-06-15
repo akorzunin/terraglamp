@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@media(max-width: 768px) {
+    .ant-picker-date-range-wrapper {
+        justify-content: center;
+        align-items: flex-end;
+    }
+
+    .ant-picker-panels {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
