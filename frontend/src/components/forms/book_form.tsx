@@ -129,8 +129,16 @@ export const BookForm = () => {
               format={dateFormat}
               size="large"
               picker="date"
-              onChange={() => {}}
-              onOk={() => {}}
+              onChange={(dateRange) => {
+                if (!dateRange) {
+                  return;
+                }
+                if (!dateRange[0] || !dateRange[1]) {
+                  return;
+                }
+                dispatch(setFormCheckInDate(dateRange[0]?.format()));
+                dispatch(setFormCheckOutDate(dateRange[1]?.format()));
+              }}
             />
           </div>
           <div className={inputSectionStyle}>
@@ -191,24 +199,6 @@ export const BookForm = () => {
             {bookingForm.phoneError && (
               <p className={errorTextValidator}>Неправильный формат телефона</p>
             )}
-          </div>
-          <div className={inputSectionStyle}>
-            <label>Дата въезда</label>
-            <input
-              className={inputStyle}
-              type="datetime-local"
-              defaultValue={bookingForm.check_in_date}
-              onChange={(e) => dispatch(setFormCheckInDate(e.target.value))}
-            />
-          </div>
-          <div className={inputSectionStyle}>
-            <label>Дата выезда</label>
-            <input
-              className={inputStyle}
-              type="datetime-local"
-              defaultValue={bookingForm.check_out_date}
-              onChange={(e) => dispatch(setFormCheckOutDate(e.target.value))}
-            />
           </div>
           <div className={inputSectionStyle}>
             <label>Число взрослых</label>
