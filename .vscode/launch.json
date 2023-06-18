@@ -1,7 +1,16 @@
 {
   "configurations": [
     {
-      "name": "Python: FastAPI",
+      "name": "Python: app debug",
+      "type": "python",
+      "request": "launch",
+      "program": "main.py",
+      "console": "integratedTerminal",
+      "jinja": true,
+      "justMyCode": true
+    },
+    {
+      "name": "Python: uvicorn FastAPI",
       "type": "python",
       "request": "launch",
       "module": "uvicorn",
@@ -9,6 +18,7 @@
       "jinja": true,
       "justMyCode": true
     },
+
     {
       "type": "chrome",
       "request": "launch",

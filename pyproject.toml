@@ -17,6 +17,7 @@ phonenumbers = "^8.13.11"
 starlette-admin = "^0.8.2"
 tinydb = "^4.7.1"
 fastapi-mail = "^1.2.8"
+aiogram = {url = "https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.zip"}
 
 
 [tool.poetry.group.dev.dependencies]
