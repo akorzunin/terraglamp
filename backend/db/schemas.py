@@ -66,10 +66,12 @@ class BookingForm(BaseModel):
     adults: int = Field(..., gt=0)
     children: int = Field(..., ge=0)
     total_members: int = Field(..., gt=0)
+    comment: str = Field("")
 
 
 class BookingModel(BaseModel):
     id: PyObjectId = Field(default_factory=PyObjectId, alias="_id")
+    tent_type: TentType = Field(...)
     adults: int = Field(..., gt=0)
     children: int = Field(..., ge=0)
     total_members: int = Field(..., gt=0)
@@ -81,6 +83,7 @@ class BookingModel(BaseModel):
     days_total: int = Field(..., gt=0)
     price: float = Field(..., gt=0)
     is_active: bool = Field(default=True)
+    comment: str = Field("")
 
     class Config:
         allow_population_by_field_name = True

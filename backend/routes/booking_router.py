@@ -11,7 +11,7 @@ router = APIRouter()
 
 @router.post(
     "/",
-    responses={409: {"model": Message}},
+    responses={status.HTTP_409_CONFLICT: {"model": Message}},
 )
 async def booking(booking: BookingForm) -> str:
     """Create booking order"""
@@ -49,6 +49,7 @@ async def booking(booking: BookingForm) -> str:
         )
 
     booking_model = BookingModel(
+        tent_type=booking.tent_type,
         adults=booking.adults,
         children=booking.children,
         total_members=booking.total_members,
@@ -58,6 +59,7 @@ async def booking(booking: BookingForm) -> str:
         check_out_date=booking.check_out_date,
         days_total=1,
         price=999999,
+        comment=booking.comment,
         # price=get_price(tent.price, booking.total_members),
         # status=booking.status,
     )

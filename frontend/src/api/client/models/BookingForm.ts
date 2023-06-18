@@ -13,6 +13,7 @@ export type BookingForm = {
   adults: number;
   children: number;
   total_members: number;
+  comment?: string;
 };
 
 export namespace BookingForm {

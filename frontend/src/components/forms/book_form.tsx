@@ -4,17 +4,20 @@ import { useEffect, useState } from "react";
 import { FormValidationError } from "./FormValidationError";
 import { useNavigate } from "react-router-dom";
 import { createBooking } from "../../api/booking";
-import { BookingForm } from "../../api/client";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import {
+  FormTentType,
   setFormAdults,
   setFormCheckInDate,
   setFormCheckOutDate,
+  setFormChildren,
+  setFormComment,
   setFormEmail,
   setFormFirstName,
   setFormLastName,
   setFormPhone,
+  setFormTentType,
   validateForm,
 } from "../../store/reducers/bookingFormReduser";
 import { DatePicker } from "antd";
@@ -28,11 +31,6 @@ const inputSectionStyle = "flex flex-col gap-2";
 const errorTextValidator = "text-red-500 text-xs";
 
 export const BookForm = () => {
-  const [tentType, setTentType] = useState<BookingForm.tent_type>(
-    BookingForm.tent_type.PRISMA
-  );
-  const [children, setChildren] = useState(0);
-  const [comment, setComment] = useState("");
   const [errorText, setErrorText] = useState<string[]>([]);
 
   const navigate = useNavigate();
@@ -47,8 +45,8 @@ export const BookForm = () => {
         bookingForm.email &&
         bookingForm.phone &&
         bookingForm.tent_type &&
-        // bookingForm.check_in_date &&
-        // bookingForm.check_out_date &&
+        bookingForm.check_in_date &&
+        bookingForm.check_out_date &&
         bookingForm.adults) ||
       bookingForm.isFormValid
     ) {
@@ -79,6 +77,7 @@ export const BookForm = () => {
       adults: bookingForm.adults,
       children: bookingForm.children,
       total_members: bookingForm.adults + bookingForm.children,
+      comment: bookingForm.comment,
     });
     if (!res.success) {
       console.error(res.message);
@@ -108,9 +107,9 @@ export const BookForm = () => {
             <label>Тип палатки</label>
             <select
               className={inputStyle}
-              defaultValue={tentType}
-              onSelect={(e) =>
-                setTentType(e.currentTarget.value as BookingForm.tent_type)
+              defaultValue={bookingForm.tent_type}
+              onChange={(e) =>
+                dispatch(setFormTentType(e.currentTarget.value as FormTentType))
               }
             >
               <option defaultValue="prisma">Призма</option>
@@ -139,6 +138,7 @@ export const BookForm = () => {
                 dispatch(setFormCheckInDate(dateRange[0]?.format()));
                 dispatch(setFormCheckOutDate(dateRange[1]?.format()));
               }}
+              inputReadOnly={true}
             />
           </div>
           <div className={inputSectionStyle}>
@@ -219,8 +219,10 @@ export const BookForm = () => {
             <label>Число детей (Дополнительные места)</label>
             <select
               className={inputStyle}
-              defaultValue={children}
-              onChange={(e) => setChildren(parseInt(e.target.value))}
+              defaultValue={bookingForm.children}
+              onChange={(e) =>
+                dispatch(setFormChildren(parseInt(e.target.value)))
+              }
             >
               <option defaultValue="0">0</option>
               <option defaultValue="1">1</option>
@@ -234,8 +236,8 @@ export const BookForm = () => {
             <textarea
               className={inputStyle}
               placeholder="Ваш комментарий"
-              defaultValue={comment}
-              onChange={(e) => setComment(e.target.value)}
+              defaultValue={bookingForm.comment}
+              onChange={(e) => dispatch(setFormComment(e.target.value))}
             />
           </div>
         </div>

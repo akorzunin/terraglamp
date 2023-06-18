@@ -25,13 +25,24 @@ const initialState: StateBookingForm = {
   adults: 1,
   children: 0,
   total_members: 0,
+  comment: "",
   isFormValid: false,
+};
+
+export type FormTentType = "Призма" | "Шатёр" | "Сафари-тент";
+const tentTypeMap: Record<FormTentType, BookingForm.tent_type> = {
+  Призма: BookingForm.tent_type.PRISMA,
+  Шатёр: BookingForm.tent_type.SHATER,
+  "Сафари-тент": BookingForm.tent_type.SAFARI_TENT,
 };
 
 export const bookingFormSlice = createSlice({
   name: "bookingForm",
   initialState,
   reducers: {
+    setFormTentType: (state, action: PayloadAction<FormTentType>) => {
+      return { ...state, tent_type: tentTypeMap[action.payload] };
+    },
     setFormFirstName: (state, action: PayloadAction<string>) => {
       if (action.payload.length < 3) {
         return {
@@ -79,6 +90,13 @@ export const bookingFormSlice = createSlice({
       // add validation according to tent type
       return { ...state, adults: action.payload };
     },
+    setFormChildren: (state, action: PayloadAction<number>) => {
+      // add validation according to tent type
+      return { ...state, children: action.payload };
+    },
+    setFormComment: (state, action: PayloadAction<string>) => {
+      return { ...state, comment: action.payload };
+    },
     validateForm: (state) => {
       if (
         !state.firstNameError &&
@@ -94,6 +112,7 @@ export const bookingFormSlice = createSlice({
 });
 
 export const {
+  setFormTentType,
   setFormFirstName,
   setFormLastName,
   setFormPhone,
@@ -101,6 +120,8 @@ export const {
   setFormCheckInDate,
   setFormCheckOutDate,
   setFormAdults,
+  setFormChildren,
+  setFormComment,
   validateForm,
 } = bookingFormSlice.actions;
 
