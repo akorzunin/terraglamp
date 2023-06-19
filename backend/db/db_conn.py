@@ -15,3 +15,4 @@ db = client.terraglamp
 bookings = db.bookings
 tents = db.tents
 users = db.users
+configs = db.configs
