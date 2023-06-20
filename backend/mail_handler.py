@@ -1,8 +1,8 @@
-from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
-from jinja2 import Template
-
 import os
+
 from dotenv import load_dotenv
+from fastapi_mail import ConnectionConfig, FastMail, MessageSchema
+from jinja2 import Template
 from pydantic import BaseModel, EmailStr
 
 load_dotenv()

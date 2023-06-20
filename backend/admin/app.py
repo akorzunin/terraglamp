@@ -1,12 +1,11 @@
 from starlette_admin import BaseAdmin as Admin
 from starlette_admin.views import CustomView
 
-from backend.admin.views.create_booking_view import NewBookingView
 from backend.admin.views.all_bookings_view import AllBookingsView
 from backend.admin.views.all_tents_view import AllTentsView
 from backend.admin.views.all_users_view import AllUsersView
+from backend.admin.views.create_booking_view import NewBookingView
 from backend.settings import DEBUG
-
 
 admin = Admin(
     templates_dir="./backend/admin/templates",

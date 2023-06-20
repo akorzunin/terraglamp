@@ -1,10 +1,11 @@
 from datetime import datetime
 from enum import Enum
 from typing import Literal
-from pydantic import BaseModel, EmailStr, Field
-from pydantic.validators import strict_str_validator
+
 import phonenumbers
 from bson import ObjectId
+from pydantic import BaseModel, EmailStr, Field
+from pydantic.validators import strict_str_validator
 
 
 class PhoneNumber(str):

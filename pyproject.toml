@@ -24,6 +24,7 @@ aiogram = {url = "https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.
 mypy = "^1.2.0"
 black = "^23.3.0"
 motor-types = "^1.0.0b1"
+ruff = "^0.0.272"
 
 [build-system]
 requires = ["poetry-core"]
@@ -35,3 +36,19 @@ warn_unused_configs = true
 warn_unused_ignores = true
 warn_redundant_casts = true
 check_untyped_defs = true
+
+
+[tool.ruff]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]

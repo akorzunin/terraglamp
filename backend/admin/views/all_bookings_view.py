@@ -1,13 +1,14 @@
+from operator import attrgetter
 from typing import Any, Optional, Sequence, Union
+
 from starlette.requests import Request
 from starlette_admin import (
     BaseModelView,
+    BooleanField,
+    DateField,
     IntegerField,
     StringField,
-    DateField,
-    BooleanField,
 )
-from operator import attrgetter
 
 from backend.db import crud
 

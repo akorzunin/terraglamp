@@ -1,4 +1,5 @@
 from typing import Literal
+
 from aiogram.types.message import Message
 
 from backend.aiogram_app.app import bot
@@ -17,7 +18,7 @@ async def get_chat_id_by_group(group: TgChatGroup) -> str:
         raise ValueError(f"Could not find group {group}")
     if not (chat_id := data.get("chat_id", None)):
         raise ValueError("Could not find chat_id in document")
-    return data["chat_id"]
+    return chat_id
 
 
 async def send_admin_message(

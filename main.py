@@ -1,16 +1,14 @@
 import asyncio
 import os
+
 import uvicorn
 from fastapi import FastAPI
-
-from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.routes import api_router
 from backend.admin.app import admin
-from backend.settings import DEBUG, FRONTEND_HOST
-from backend.aiogram_app.app import dp, bot
-
+from backend.aiogram_app.app import bot, dp
+from backend.routes import api_router
+from backend.settings import DEBUG
 
 app = FastAPI(
     title="TerraGlamp",

@@ -1,9 +1,10 @@
 from datetime import datetime, timedelta
 from typing import AsyncGenerator, Optional
+
 from bson.raw_bson import RawBSONDocument
 from fastapi.encoders import jsonable_encoder
 
-from backend.db.db_conn import users, tents, bookings
+from backend.db.db_conn import bookings, tents, users
 from backend.db.schemas import BookingModel, TentModel, TentType, UserModel
 
 

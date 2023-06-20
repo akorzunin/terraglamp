@@ -1,9 +1,9 @@
 from fastapi import APIRouter
 
 from backend.routes.booking_router import router as booking_router
+from backend.routes.mail_rourer import router as mail_rourer
 from backend.routes.tent_router import router as tent_router
 from backend.routes.user_router import router as user_router
-from backend.routes.mail_rourer import router as mail_rourer
 
 router = APIRouter()
 

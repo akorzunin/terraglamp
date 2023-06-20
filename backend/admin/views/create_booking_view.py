@@ -4,17 +4,17 @@ from typing import Any, Dict, List, Optional, Sequence, Union
 from starlette.requests import Request
 from starlette_admin import (
     BaseModelView,
-    IntegerField,
-    StringField,
-    DateField,
-    EnumField,
-    PhoneField,
-    EmailField,
     BooleanField,
+    DateField,
+    EmailField,
+    EnumField,
+    IntegerField,
+    PhoneField,
+    StringField,
 )
 
-from backend.db.schemas import TentTypeEnum
 from backend.db import crud
+from backend.db.schemas import TentTypeEnum
 
 
 class NewBookingView(BaseModelView):

@@ -1,5 +1,6 @@
 # register baisic commands
 from aiogram import Bot, Dispatcher
+
 from backend.aiogram_app import baisic_commands
 from backend.settings import TELEGRAM_TOKEN
 
