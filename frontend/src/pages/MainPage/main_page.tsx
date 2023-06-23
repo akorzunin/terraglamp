@@ -14,15 +14,15 @@ import { TitleImage } from "../../components/title-image/TitleImage";
 export const MainPage = () => {
   const [mobileMenuActive, setMobileMenuiActive] = useState(false);
   return (
-    <main className="relative">
+    <main className="relative grid h-full w-full grid-cols-1">
       <BurgerMenu onClick={setMobileMenuiActive} active={mobileMenuActive} />
       {mobileMenuActive && <HeaderMobile />}
       <TitleImage
         isHeader
         image="./main.jpg"
-        text="Здесь можно проникнуться шорохом травы, дуновением ветра, 
-        шумом течения реки. У нас наполняешься энергией, восстанавливаешь 
-        силы и встречаешь именно то, что ищешь"
+        text="Здесь можно проникнуться шорохом травы, дуновением ветра,
+          шумом течения реки. У нас наполняешься энергией, восстанавливаешь
+          силы и встречаешь именно то, что ищешь"
       />
       <HeaderGallery />
       <AboutUs />

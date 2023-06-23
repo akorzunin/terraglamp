@@ -12,7 +12,7 @@ export const Footer: FC = () => {
       <div className="flex flex-col gap-2 pt-5">
         <p className={footerTextStyle}>+7 912 700 95 65</p>
         <p className={footerTextStyle}>terra.glamp@mail.ru</p>
-        <p className="text-gray-700 text-center text-sm py-4">
+        <p className="py-4 text-center text-sm text-gray-700">
           Кировская обл., Слободской р-н, п.Чирковский завод, дачное
           товарищество "Лесник"
         </p>
@@ -21,7 +21,7 @@ export const Footer: FC = () => {
           <Inst />
           <WhatsApp />
         </Space>
-        <p className="text-gray-700 text-center text-sm py-4">
+        <p className="py-4 text-center text-sm text-gray-700">
           © 2023 TerraGlamp. Все права защищены.
         </p>
       </div>

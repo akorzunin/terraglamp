@@ -17,13 +17,13 @@ export const TitleImage: FC<ITitleImage> = ({
       <img src={image} alt="Кемпинг" />
       <div className="absolute bottom-2 left-4">
         {isHeader && (
-          <p className="font-sans font-bold text-3xl text-white">Глэмпинг</p>
+          <p className="font-sans text-3xl font-bold text-white">Глэмпинг</p>
         )}
-        <p className="font-sans font-bold text-3xl text-white mb-5">
+        <p className="mb-5 font-sans text-3xl font-bold text-white">
           TERRA GLAMP
         </p>
-        <p className="font-sans font-normal text-sm text-white pr-4">{text}</p>
-        <div className="flex justijy-center mt-2">
+        <p className="pr-4 font-sans text-sm font-normal text-white">{text}</p>
+        <div className="justijy-center mt-2 flex">
           <DoubleRightOutlined
             onClick={() => {
               document
@@ -31,7 +31,7 @@ export const TitleImage: FC<ITitleImage> = ({
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
             rotate={90}
-            className="m-auto text-white text-3xl animate-bounce hover:opacity-60 transition-opacity cursor-pointer"
+            className="m-auto animate-bounce cursor-pointer text-3xl text-white transition-opacity hover:opacity-60"
           />
         </div>
       </div>

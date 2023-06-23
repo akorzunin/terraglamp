@@ -17,12 +17,9 @@ export type BookingForm = {
 };
 
 export namespace BookingForm {
-
   export enum tent_type {
-    PRISMA = 'prisma',
-    SHATER = 'shater',
-    SAFARI_TENT = 'safariTent',
+    PRISMA = "prisma",
+    SHATER = "shater",
+    SAFARI_TENT = "safariTent",
   }
-
-
 }

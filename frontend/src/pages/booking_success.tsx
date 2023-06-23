@@ -10,7 +10,7 @@ export const BookingSuccess = () => {
     <>
       <BurgerMenu onClick={setMobileMenuiActive} active={mobileMenuActive} />
       {mobileMenuActive && <HeaderMobile />}
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex h-screen items-center justify-center">
         Booking success
       </div>
       <Footer />

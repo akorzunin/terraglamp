@@ -7,12 +7,12 @@ const buttonClassName =
 export const Options = () => {
   const navigate = useNavigate();
   return (
-    <div className="mt-10 pr-2 pl-2" id="tents">
+    <div className="mt-10 pl-2 pr-2" id="tents">
       <div className="flex flex-col">
-        <h3 className="mb-8 font-sans font-bold text-2xl text-center">
+        <h3 className="mb-8 text-center font-sans text-2xl font-bold">
           Варианты размещения
         </h3>
-        <p className="mb-10 font-sans font-normal text-base text-center pr-10 pl-10">
+        <p className="mb-10 pl-10 pr-10 text-center font-sans text-base font-normal">
           Для создания интерьеров мы используем только экологичные материалы
         </p>
         <Carousel waitForAnimate>
@@ -20,12 +20,12 @@ export const Options = () => {
           <Image src="./r3c1.jpg" />
           {/* <Image src="./r4c1.jpg" /> TODO add this image */}
         </Carousel>
-        <h4 className="font-sans font-bold text-2xl mt-7">Призма</h4>
-        <p className="font-sans font-normal text-base">Стоимость аренды:</p>
-        <p className="font-sans font-normal text-base mb-5">
+        <h4 className="mt-7 font-sans text-2xl font-bold">Призма</h4>
+        <p className="font-sans text-base font-normal">Стоимость аренды:</p>
+        <p className="mb-5 font-sans text-base font-normal">
           С пн-чт: 4 500 р. С пт-вс: 6 000 р.
         </p>
-        <ul className="font-sans font-normal text-base">
+        <ul className="font-sans text-base font-normal">
           <li>
             Уютная палатка с двумя односпальными (или одной двуспальной)
             кроватями, белоснежным постельным бельём и всем необходимым для
@@ -53,12 +53,12 @@ export const Options = () => {
           <Image src="./r3c1.jpg" />
           <Image src="./shater.jpg" />
         </Carousel>
-        <h4 className="font-sans font-bold text-2xl mt-7">Шатёр</h4>
-        <p className="font-sans font-normal text-base">Стоимость аренды:</p>
-        <p className="font-sans font-normal text-base mb-5">
+        <h4 className="mt-7 font-sans text-2xl font-bold">Шатёр</h4>
+        <p className="font-sans text-base font-normal">Стоимость аренды:</p>
+        <p className="mb-5 font-sans text-base font-normal">
           С пн-чт: 3 500 р. С пт-вс: 4 500 р.
         </p>
-        <ul className="font-sans font-normal text-base">
+        <ul className="font-sans text-base font-normal">
           <li>Проживание в двухместном шатре.</li>
           <li>
             Уютная палатка с двумя односпальными кроватями, белоснежным
@@ -85,12 +85,12 @@ export const Options = () => {
           <Image src="./r3c1.jpg" />
           <Image src="./shater.jpg" />
         </Carousel>
-        <h4 className="font-sans font-bold text-2xl mt-7">Сафари-тент</h4>
-        <p className="font-sans font-normal text-base">Стоимость аренды:</p>
-        <p className="font-sans font-normal text-base mb-5">
+        <h4 className="mt-7 font-sans text-2xl font-bold">Сафари-тент</h4>
+        <p className="font-sans text-base font-normal">Стоимость аренды:</p>
+        <p className="mb-5 font-sans text-base font-normal">
           С пн-чт: 6 000 р. С пт-вс: 7 000 р.
         </p>
-        <ul className="font-sans font-normal text-base">
+        <ul className="font-sans text-base font-normal">
           <li>
             Уютная палатка с двумя односпальными (или одной двуспальной)
             кроватями, белоснежным постельным бельём и всем необходимым для

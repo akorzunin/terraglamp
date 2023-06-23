@@ -5,15 +5,15 @@ const headerElementClass = "text-black text-1xl ";
 export const Header = () => {
   const navigate = useNavigate();
   return (
-    <header className="bg-[rgba(0,0,0,0.5)] sticky top-0 left-0 z-50">
-      <div className="flex justify-between w-[60%] mx-auto bg-transparent max-h-20">
+    <header className="sticky left-0 top-0 z-50 bg-[rgba(0,0,0,0.5)]">
+      <div className="mx-auto flex max-h-20 w-[60%] justify-between bg-transparent">
         <div className="flex items-center gap-3">
-          <img src="./logo.jpg" alt="logo" className="w-20 h-20"></img>
+          <img src="./logo.jpg" alt="logo" className="h-20 w-20"></img>
           <p className={headerElementClass}>О НАС</p>
           <p className={headerElementClass}>РАЗВЛЕЧЕНИЯ</p>
           <p className={headerElementClass}>ПАЛАТКИ</p>
         </div>
-        <div className="flex justify-end items-center gap-3">
+        <div className="flex items-center justify-end gap-3">
           <p>+7 912 700 95 65</p>
           <div className="flex gap-2">
             <p>VK</p>
@@ -21,7 +21,7 @@ export const Header = () => {
             <p>WA</p>
           </div>
           <button
-            className="bg-yellow-400 text-black rounded-3xl text-sm	 font-bold px-7 py-2 transition-colors hover:bg-orange-400"
+            className="rounded-3xl bg-yellow-400 px-7 py-2	 text-sm font-bold text-black transition-colors hover:bg-orange-400"
             onClick={() => navigate("/booking")}
           >
             Забронировать

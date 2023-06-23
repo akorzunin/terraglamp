@@ -1,29 +1,28 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BookingForm } from '../models/BookingForm';
+import type { BookingForm } from "../models/BookingForm";
 
-import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { CancelablePromise } from "../core/CancelablePromise";
+import { OpenAPI } from "../core/OpenAPI";
+import { request as __request } from "../core/request";
 
 export class ApiBookingService {
-
   /**
    * Booking
    * Create booking order
-   * @param requestBody 
+   * @param requestBody
    * @returns string Successful Response
    * @throws ApiError
    */
   public static bookingApiBookingPost(
-requestBody: BookingForm,
-): CancelablePromise<string> {
+    requestBody: BookingForm
+  ): CancelablePromise<string> {
     return __request(OpenAPI, {
-      method: 'POST',
-      url: '/api/booking/',
+      method: "POST",
+      url: "/api/booking/",
       body: requestBody,
-      mediaType: 'application/json',
+      mediaType: "application/json",
       errors: {
         409: `Conflict`,
         422: `Validation Error`,
@@ -39,8 +38,8 @@ requestBody: BookingForm,
    */
   public static markDoneApiBookingMarkDonePatch(): CancelablePromise<any> {
     return __request(OpenAPI, {
-      method: 'PATCH',
-      url: '/api/booking/mark-done',
+      method: "PATCH",
+      url: "/api/booking/mark-done",
     });
   }
 
@@ -52,8 +51,8 @@ requestBody: BookingForm,
    */
   public static cancelApiBookingCancelDelete(): CancelablePromise<any> {
     return __request(OpenAPI, {
-      method: 'DELETE',
-      url: '/api/booking/cancel',
+      method: "DELETE",
+      url: "/api/booking/cancel",
     });
   }
 
@@ -65,8 +64,8 @@ requestBody: BookingForm,
    */
   public static bookingListApiBookingListGet(): CancelablePromise<any> {
     return __request(OpenAPI, {
-      method: 'GET',
-      url: '/api/booking/list',
+      method: "GET",
+      url: "/api/booking/list",
     });
   }
 
@@ -78,9 +77,8 @@ requestBody: BookingForm,
    */
   public static bookingListDoneApiBookingListDoneGet(): CancelablePromise<any> {
     return __request(OpenAPI, {
-      method: 'GET',
-      url: '/api/booking/list/done',
+      method: "GET",
+      url: "/api/booking/list/done",
     });
   }
-
 }

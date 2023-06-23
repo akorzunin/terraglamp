@@ -1,12 +1,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type { CancelablePromise } from "../core/CancelablePromise";
+import { OpenAPI } from "../core/OpenAPI";
+import { request as __request } from "../core/request";
 
 export class ApiUserService {
-
   /**
    * Get User Bookings
    * Get all bookings for a user
@@ -15,9 +14,8 @@ export class ApiUserService {
    */
   public static getUserBookingsApiUserBookingsGet(): CancelablePromise<any> {
     return __request(OpenAPI, {
-      method: 'GET',
-      url: '/api/user/bookings',
+      method: "GET",
+      url: "/api/user/bookings",
     });
   }
-
 }

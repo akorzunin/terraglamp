@@ -3,9 +3,9 @@ import { TitleImage } from "../title-image/TitleImage";
 export const AboutUs = () => {
   return (
     <div id="about-us">
-      <div className="pl-2 pr-2 mt-10">
-        <h3 className="mb-4 font-sans font-bold text-3xl ">О нас</h3>
-        <p className="mb-10 font-sans font-normal text-xl">
+      <div className="mt-10 pl-2 pr-2">
+        <h3 className="mb-4 font-sans text-3xl font-bold ">О нас</h3>
+        <p className="mb-10 font-sans text-xl font-normal">
           Наш отель расположен на берегу реки Вятки и окружен сосновым лесом. В
           реке можно купаться, плавать на лодке и рыбачить. Здесь соблюдён
           идеальный баланс - отдых на общей территории, посиделки у костра,

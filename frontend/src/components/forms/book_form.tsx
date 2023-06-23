@@ -94,15 +94,15 @@ export const BookForm = () => {
   }
   return (
     <>
-      <h2 className="text-center py-4 text-2xl">
+      <h2 className="py-4 text-center text-2xl">
         Заполните форму для бронирования
       </h2>
       <form
         onSubmit={submitForm}
-        className="flex flex-col items-center gap-4 w-[80%] max-w-screen-md mx-auto text-start mb-8"
+        className="mx-auto mb-8 flex w-[80%] max-w-screen-md flex-col items-center gap-4 text-start"
       >
         {/* todo MAKE INPUT COMPONTENTS */}
-        <div className="flex flex-col gap-4 mb-4 w-[80%] mx-auto text-start">
+        <div className="mx-auto mb-4 flex w-[80%] flex-col gap-4 text-start">
           <div className={inputSectionStyle}>
             <label>Тип палатки</label>
             <select
@@ -243,7 +243,7 @@ export const BookForm = () => {
         </div>
         <button
           disabled={!bookingForm.isFormValid}
-          className="w-64 bg-yellow-400 text-black rounded-full text-sm font-bold py-3 transition-colors hover:bg-orange-400 disabled:bg-gray-400"
+          className="w-64 rounded-full bg-yellow-400 py-3 text-sm font-bold text-black transition-colors hover:bg-orange-400 disabled:bg-gray-400"
         >
           Забронировать аппартаменты
         </button>
