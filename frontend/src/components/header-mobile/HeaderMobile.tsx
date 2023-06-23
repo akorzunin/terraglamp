@@ -16,7 +16,7 @@ export const HeaderMobile = () => {
     el?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <header className="bg-[rgba(0,0,0,0.5)] flex flex-col items-center pt-5 pb-5">
+    <header className="fixed top-0 z-10 flex w-full flex-col items-center bg-[rgba(0,0,0,0.5)] pb-5 pt-5 aria-hidden:animate-pulse">
       <Image src="./logo.jpg" width={80} height={80} />
       <p
         className={`${headerClassName} mt-8 ${headerTitleClassName}`}
@@ -37,14 +37,14 @@ export const HeaderMobile = () => {
         ПАЛАТКИ
       </p>
       <p className={`${headerClassName} mt-5`}>+7 912 700 95 65</p>
-      <Space className="justify-center mt-2">
+      <Space className="mt-2 justify-center">
         <VK />
         <Inst />
         <WhatsApp />
       </Space>
       <button
         onClick={() => navigate("/booking")}
-        className="bg-amber-400 font-sans text-base font-bold pt-3 pb-3 pl-10 pr-10 rounded-full mt-5"
+        className="mt-5 rounded-full bg-amber-400 pb-3 pl-10 pr-10 pt-3 font-sans text-base font-bold"
       >
         Забронировать
       </button>

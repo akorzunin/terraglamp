@@ -9,7 +9,7 @@ interface IBurgerMenu {
 export const BurgerMenu: FC<IBurgerMenu> = ({ onClick, active }) => {
   return (
     <div
-      className="fixed right-7 top-5 text-black z-10"
+      className="fixed right-7 top-5 text-black z-20"
       onClick={() => onClick(!active)}
     >
       <MenuOutlined className="text-xl" />
