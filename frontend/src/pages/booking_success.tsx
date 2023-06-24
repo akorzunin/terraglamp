@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BurgerMenu } from "../components/burger-menu/BurgerMenu";
 import { Footer } from "../components/footer/footer";
-import { HeaderMobile } from "../components/header-mobile/HeaderMobile";
+import { HeaderMobile } from "../components/headers/HeaderMobile";
 
 export const BookingSuccess = () => {
   const [mobileMenuActive, setMobileMenuiActive] = useState(false);

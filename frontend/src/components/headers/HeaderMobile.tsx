@@ -3,12 +3,17 @@ import { VK } from "../../icons/VK";
 import { Inst } from "../../icons/Inst";
 import { WhatsApp } from "../../icons/WhatsApp";
 import { useNavigate } from "react-router-dom";
+import { FC } from "react";
 
 const headerClassName = "font-sans font-normal text-sm text-white";
 const headerTitleClassName =
   "hover:opacity-60 transition-opacity cursor-pointer";
 
-export const HeaderMobile = () => {
+interface IHeaderMobile {
+  mobileMenuActive: boolean;
+}
+
+export const HeaderMobile: FC<IHeaderMobile> = ({ mobileMenuActive }) => {
   const navigate = useNavigate();
 
   const scrollTo = (id: string) => {
@@ -16,7 +21,12 @@ export const HeaderMobile = () => {
     el?.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <header className="fixed top-0 z-10 flex w-full flex-col items-center bg-[rgba(0,0,0,0.5)] pb-5 pt-5 aria-hidden:animate-pulse">
+    <header
+      className={`fixed ${
+        mobileMenuActive ? "top-0" : "-top-[30rem]"
+      } z-10 flex w-full origin-top-right flex-col items-center 
+bg-[rgba(0,0,0,0.5)] pb-5 pt-5 duration-300`}
+    >
       <Image src="./logo.jpg" width={80} height={80} />
       <p
         className={`${headerClassName} mt-8 ${headerTitleClassName}`}
