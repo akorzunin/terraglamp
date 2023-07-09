@@ -7,11 +7,11 @@ export const CommonHeader = () => {
   const [mobileMenuActive, setMobileMenuiActive] = useState(false);
   return (
     <>
-      <div className="sm:hidden">
+      <div className="lg:hidden">
         <BurgerMenu onClick={setMobileMenuiActive} active={mobileMenuActive} />
         <HeaderMobile mobileMenuActive={mobileMenuActive} />
       </div>
-      <div className="hidden sm:block">
+      <div className="hidden lg:block">
         <Header />
       </div>
     </>

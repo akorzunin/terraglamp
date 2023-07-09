@@ -11,23 +11,27 @@ import { CommonHeader } from "../../components/headers/CommonHeader";
 
 export const MainPage = () => {
   return (
-    <main className="relative grid h-full w-full grid-cols-1">
-      <CommonHeader />
-      <TitleImage
-        isHeader
-        image="./main.jpg"
-        text="Здесь можно проникнуться шорохом травы, дуновением ветра,
-          шумом течения реки. У нас наполняешься энергией, восстанавливаешь
-          силы и встречаешь именно то, что ищешь"
-      />
-      <HeaderGallery />
-      <AboutUs />
-      <Leisure />
-      <Gallery />
-      <Options />
-      <Actions />
-      <Reservation />
-      <Footer />
+    <main className="w-full">
+      <div className="grid-cols-1mx-auto relative grid h-full w-full">
+        <CommonHeader />
+        <TitleImage
+          isHeader
+          image="./main.jpg"
+          text="Здесь можно проникнуться шорохом травы, дуновением ветра,
+        шумом течения реки. У нас наполняешься энергией, восстанавливаешь
+        силы и встречаешь именно то, что ищешь"
+        />
+      </div>
+      <div className="relative mx-auto grid h-full w-full max-w-screen-2xl grid-cols-1 ">
+        <HeaderGallery />
+        <AboutUs />
+        <Leisure />
+        <Gallery />
+        <Options />
+        <Actions />
+        <Reservation />
+        <Footer />
+      </div>
     </main>
   );
 };

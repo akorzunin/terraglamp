@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { DoubleRightOutlined } from "@ant-design/icons";
 
 interface ITitleImage {
@@ -13,8 +14,12 @@ export const TitleImage: FC<ITitleImage> = ({
   image,
 }) => {
   return (
-    <div className="relative">
-      <img src={image} alt="Кемпинг" />
+    <div className="relative w-full">
+      <img
+        src={image}
+        alt="Кемпинг"
+        className="max-h-screen w-full object-cover"
+      />
       <div className="absolute bottom-2 left-4">
         {isHeader && (
           <p className="font-sans text-3xl font-bold text-white">Глэмпинг</p>
